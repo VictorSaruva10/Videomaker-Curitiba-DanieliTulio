@@ -18,6 +18,7 @@ export interface PortfolioItem {
   mediaType?: 'video' | 'photo';
   aspectRatio: '16:9' | '9:16' | '4:3' | '3:4';
   coverImage: string;
+  coverFit?: 'cover' | 'contain';
   videoUrl?: string;
   client: string;
   year: string;
@@ -46,9 +47,6 @@ export interface ProcessStep {
 export interface TestimonialItem {
   id: string;
   quote: string;
-  author: string;
-  role: string;
-  projectType: string;
 }
 
 export const siteConfig = {
@@ -66,10 +64,10 @@ export const siteConfig = {
     signature: 'Danieli Tulio · Videomaker & Storymaker',
     tagline: 'Sua história merece ser vista.',
     location: 'Curitiba e Região Metropolitana · Disponível para produções em todo o Brasil',
-    bioShort: 'Transformo momentos, ideias e marcas em vídeos criativos que despertam emoções e conectam pessoas.',
+    bioShort: 'Crio vídeos para marcas, empresas e redes sociais, com narrativas autênticas que despertam emoções e aproximam pessoas.',
     aboutTitle: 'Mais do que registrar. É sobre fazer sentir.',
     aboutTextParagraph1: 'Eu sou Danieli Tulio, especialista em transformar ideias em conteúdo estratégico com impacto visual e posicionamento profissional.',
-    aboutTextParagraph2: 'Combinando direção criativa, produção audiovisual e gestão de redes sociais, ajudo marcas a crescerem com presença real no digital.',
+    aboutTextParagraph2: 'Combinando direção criativa, produção audiovisual e criação de conteúdo para redes sociais, ajudo marcas a comunicar sua essência com autenticidade.',
     education: 'Centro Europeu',
     experience: '4 anos de atuação',
   },
@@ -87,7 +85,6 @@ export const siteConfig = {
   // Imagens Principais
   media: {
     heroBanner: heroImg,
-    heroVideoUrl: '/assets/aistudio/IMG_1208_a91c5682.MOV',
     portrait: '/assets/aistudio/DSC00409_Original_4c6acb99.JPG',
     brandShowcase: brandImg,
     reelsVertical: verticalImg,
@@ -138,32 +135,6 @@ export const siteConfig = {
   // Portfólio Audiovisual
   portfolio: [
     {
-      id: 'proj-1',
-      title: 'Aura Ateliê — Campanha de Identidade',
-      category: 'Marcas & Negócios',
-      aspectRatio: '16:9',
-      coverImage: brandImg,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      client: 'Aura Ateliê Design',
-      year: '2026',
-      description: 'Filme institucional focado na sensibilidade artesanal, iluminação natural e processos de manufatura de cerâmica contemporânea.',
-      deliverables: ['Filme manifesto 60s', '3 pílulas para feed', 'Cápsula vertical para Stories'],
-      isDemo: true,
-    },
-    {
-      id: 'proj-2',
-      title: 'Rotina Criativa — Minimal Editorial',
-      category: 'Reels & Redes',
-      aspectRatio: '9:16',
-      coverImage: verticalImg,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      client: 'Estúdio Linho',
-      year: '2026',
-      description: 'Série de 4 reels estéticos capturados com estética cinematográfica vertical, explorando detalhes, texturas e atmosfera calma.',
-      deliverables: ['4 Reels verticais 9:16', 'Direção de arte no set', 'Trilha sonora licenciada'],
-      isDemo: true,
-    },
-    {
       id: 'proj-3',
       title: 'Bastidores: Produção & Gravação Externa',
       category: 'Bastidores',
@@ -176,28 +147,28 @@ export const siteConfig = {
       deliverables: ['Fotografia de bastidores', 'Cobertura de set', 'Registro documental de produção'],
     },
     {
-      id: 'proj-4',
-      title: 'Direção em Cena — Ensaio Editorial',
-      category: 'Marcas & Negócios',
-      aspectRatio: '16:9',
-      coverImage: heroImg,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      client: 'Vanguarda Concept',
+      id: 'proj-5',
+      title: 'Lojão da Felicidade — Vídeo de Marca',
+      category: 'Reels & Redes',
+      aspectRatio: '9:16',
+      coverImage: '/assets/lojaodaffelicidade-cover.png',
+      coverFit: 'contain',
+      videoUrl: '/assets/lojaodaffelicidade.mp4',
+      client: 'Lojão da Felicidade',
       year: '2026',
-      description: 'Captação fluida com gimbal e lente prime para apresentação de nova coleção de mobiliário e arquitetura de interiores.',
-      deliverables: ['Vídeo principal 90s', 'Edição em 4K', 'Trilha sonora imersiva'],
-      isDemo: true,
+      description: 'Produção audiovisual para a marca Lojão da Felicidade.',
+      deliverables: ['Vídeo de marca'],
     },
   ] as PortfolioItem[],
 
   // Seção de Posicionamento
   positioning: {
-    quote: 'Conteúdo instagramável é capaz de cativar e transformar pessoas.',
-    highlight: 'Uma imagem desperta atenção. Uma história cria conexão. Um conteúdo bem pensado ajuda sua marca a se comunicar de forma autêntica.',
+    quote: 'Conteúdo que encanta o olhar, desperta emoções e transforma a maneira como marcas se conectam com pessoas.',
+    highlight: 'Mais do que produzir imagens bonitas, é sobre contar histórias que despertam interesse, traduzem essências e permanecem na memória. Cada detalhe importa quando a intenção é comunicar com autenticidade.',
     values: [
-      { label: 'Sensibilidade Estética', description: 'Olhar apurado para composição, iluminação e harmonia visual.' },
-      { label: 'Narrativa com Propósito', description: 'Cada segundo de vídeo comunica a mensagem certa para o público certo.' },
-      { label: 'Agilidade & Formatos Atuais', description: 'Conteúdos pensados estrategicamente para o ritmo e as exigências do digital.' },
+      { label: 'Atenção que Desperta', description: 'Em meio a tantos estímulos, a estética, o ritmo e a criatividade transformam segundos em oportunidades de despertar curiosidade e conquistar olhares.' },
+      { label: 'Conexões que Aproximam', description: 'Histórias bem contadas criam identificação, despertam emoções e aproximam marcas de pessoas de forma genuína.' },
+      { label: 'Valor que se Percebe', description: 'Cada escolha visual comunica algo. Da captação à edição, o cuidado com os detalhes fortalece a identidade da marca e transmite a qualidade que ela deseja representar.' },
     ],
   },
 
@@ -229,24 +200,39 @@ export const siteConfig = {
   testimonials: [
     {
       id: 'test-1',
-      quote: 'A Dani tem uma sensibilidade rara para captar a essência da nossa marca sem que nada pareça forçado. Os vídeos transformaram a percepção dos nossos clientes no Instagram.',
-      author: 'Camila Ferreira',
-      role: 'Fundadora da Casa Alva Cerâmicas',
-      projectType: 'Filme Conceitual & Reels',
+      quote: 'Trabalho incrível! A sensibilidade para captar cada detalhe fez toda a diferença. O resultado ficou lindo e superou minhas expectativas.',
     },
     {
       id: 'test-2',
-      quote: 'A cobertura dos nossos bastidores e o storymaker no dia do lançamento foi impecável. Postamos conteúdos com acabamento de cinema enquanto o evento ainda estava acontecendo!',
-      author: 'Lucas Medeiros',
-      role: 'Diretor de Marketing · Vertice Hub',
-      projectType: 'Storymaker & Cobertura',
+      quote: 'Uma profissional dedicada, criativa e muito atenta aos detalhes. Todo o processo foi leve, organizado e profissional.',
     },
     {
       id: 'test-3',
-      quote: 'Profissionalismo, pontualidade e uma direção que deixa qualquer pessoa à vontade na frente da câmera. Os vídeos geraram um retorno imediato de orçamentos.',
-      author: 'Mariana Duarte',
-      role: 'Arquiteta e Designer de Interiores',
-      projectType: 'Série de Vídeos Institucionais',
+      quote: 'Os vídeos ficaram modernos, dinâmicos e com a identidade da nossa marca. Exatamente o que buscávamos para nossas redes sociais!',
+    },
+    {
+      id: 'test-4',
+      quote: 'Conseguiu transformar momentos especiais em lembranças que vamos guardar com muito carinho. Ficou maravilhoso!',
+    },
+    {
+      id: 'test-5',
+      quote: 'A qualidade das imagens, a edição e o cuidado com cada cena são impressionantes. Dá para perceber o carinho colocado em cada projeto.',
+    },
+    {
+      id: 'test-6',
+      quote: 'Ela conseguiu traduzir a essência da nossa marca em imagens. O resultado ficou autêntico, criativo e muito bem produzido.',
+    },
+    {
+      id: 'test-8',
+      quote: 'Os stories ficaram espontâneos, envolventes e com uma estética incrível. Cada detalhe ajudou a contar nossa história de um jeito especial.',
+    },
+    {
+      id: 'test-9',
+      quote: 'Além do talento, o diferencial está no olhar atento e na dedicação. Cada cena teve propósito e o resultado ficou impecável.',
+    },
+    {
+      id: 'test-10',
+      quote: 'Se você procura uma profissional criativa, comprometida e apaixonada pelo que faz, vale muito a pena conhecer o trabalho da Danieli!',
     },
   ] as TestimonialItem[],
 

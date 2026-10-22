@@ -54,10 +54,10 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="video-modal-title"
-        className="relative w-full max-w-5xl bg-[#1A1917] text-[#F7F5F1] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+        className="relative w-full max-w-5xl h-[95dvh] max-h-[900px] bg-[#1A1917] text-[#F7F5F1] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col"
       >
         {/* Top Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#24231F]">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#24231F]">
           <div className="flex items-center gap-2.5">
             {isPhoto ? (
               <Camera className="w-4 h-4 text-[#C4A77D]" />
@@ -85,24 +85,23 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
         {/* Media Container: Photo vs Video */}
         {isPhoto ? (
-          <div className="relative bg-[#0E0D0C] flex items-center justify-center p-4 sm:p-6 overflow-hidden flex-1 min-h-[350px] sm:min-h-[500px]">
+          <div className="relative bg-[#0E0D0C] flex items-center justify-center p-4 sm:p-6 overflow-hidden flex-1 min-h-0">
             <img
               src={project?.coverImage}
               alt={title}
-              className="max-h-[68vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl"
+              className="max-h-full max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl"
             />
           </div>
         ) : (
-          <div className="relative bg-black flex items-center justify-center overflow-hidden flex-1 min-h-[300px] sm:min-h-[460px]">
+          <div className="relative bg-black flex items-center justify-center overflow-hidden flex-1 min-h-0">
             <video
               ref={videoRef}
               poster={poster}
               controls
               autoPlay
               playsInline
-              className="w-full max-h-[65vh] object-contain"
+              className="w-full h-full max-h-full object-contain"
             >
-              <source src={videoSrc} type="video/quicktime" />
               <source src={videoSrc} type="video/mp4" />
               Seu navegador não suporta este formato de vídeo.
             </video>
@@ -110,7 +109,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         )}
 
         {/* Bottom Details Bar */}
-        <div className="p-6 bg-[#24231F] border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="shrink-0 p-4 sm:p-6 bg-[#24231F] border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div className="space-y-1">
             {project && (
               <div className="flex items-center gap-2 text-xs text-[#EAE5DC]/70">

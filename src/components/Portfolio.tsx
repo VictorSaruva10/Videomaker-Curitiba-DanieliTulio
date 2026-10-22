@@ -36,7 +36,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               Histórias em movimento.
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#77736C] font-light">
-              Uma seleção de imagens, projetos e momentos capturados por meio de um olhar criativo.
+              Conheça projetos audiovisuais para marcas e conteúdos verticais para redes sociais, além de registros dos bastidores de produção.
             </p>
           </div>
         </div>
@@ -47,6 +47,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
+              aria-pressed={activeFilter === filter}
               className={`px-4 py-2 text-xs font-medium rounded-md transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 activeFilter === filter
                   ? 'bg-[#24231F] text-[#F7F5F1] shadow-sm'
@@ -75,7 +76,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
             const aspectClass = isPhotoFormat
               ? 'aspect-[3/4]'
               : isVertical
-              ? 'aspect-[9/14] sm:aspect-[9/16]'
+              ? 'aspect-[9/16]'
               : isWide
               ? 'aspect-video'
               : 'aspect-[4/3]';
@@ -84,6 +85,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onSelectProject(project);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${isPhoto ? 'Ampliar foto' : 'Assistir vídeo'}: ${project.title}`}
                 className={`${colSpan} group cursor-pointer flex flex-col justify-between rounded-xl overflow-hidden bg-[#F7F5F1] border border-[#DEDAD2] hover:border-[#24231F]/50 transition-all duration-300 hover:shadow-md`}
               >
                 {/* Media Container */}
@@ -91,8 +101,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                   <img
                     src={project.coverImage}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    className={`w-full h-full ${project.coverFit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
                   />
                   
                   {/* Subtle Gradient Scrim */}

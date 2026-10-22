@@ -73,7 +73,7 @@ export const ClientConfigHelperModal: React.FC<ClientConfigHelperModalProps> = (
 
         <div className="p-4 rounded-lg bg-[#EAE5DC]/60 border border-[#DEDAD2] text-xs text-[#24231F]">
           <span className="font-semibold block mb-1">Como atualizar os dados:</span>
-          Basta abrir <code className="font-mono bg-white px-1 rounded">src/config/siteData.ts</code> e alterar o campo desejado (como <code className="font-mono">contact.whatsappNumber</code> ou <code className="font-mono">media.heroVideoUrl</code>). As alterações são propagadas instantaneamente por todo o site.
+          Basta abrir <code className="font-mono bg-white px-1 rounded">src/config/siteData.ts</code> e alterar o campo desejado (como <code className="font-mono">contact.whatsappNumber</code> ou <code className="font-mono">professional.bioShort</code>). As alterações são propagadas instantaneamente por todo o site.
         </div>
 
         <div className="mt-8 pt-6 border-t border-[#DEDAD2] flex justify-end">

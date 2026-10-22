@@ -33,10 +33,10 @@ export const Positioning: React.FC = () => {
               <Eye className="w-4 h-4" />
             </div>
             <h3 className="font-serif text-xl font-medium text-[#F7F5F1] mb-2">
-              Atenção Genuína
+              Atenção que Desperta
             </h3>
             <p className="text-xs sm:text-sm text-[#EAE5DC]/70 font-light leading-relaxed">
-              Em um feed acelerado, o cuidado com a estética faz as pessoas pararem para assistir o que você tem a dizer.
+              Em meio a tantos estímulos, a estética, o ritmo e a criatividade transformam segundos em oportunidades de despertar curiosidade e conquistar olhares.
             </p>
           </div>
 
@@ -45,10 +45,10 @@ export const Positioning: React.FC = () => {
               <HeartHandshake className="w-4 h-4" />
             </div>
             <h3 className="font-serif text-xl font-medium text-[#F7F5F1] mb-2">
-              Conexão Emocional
+              Conexões que Aproximam
             </h3>
             <p className="text-xs sm:text-sm text-[#EAE5DC]/70 font-light leading-relaxed">
-              Vídeos bem produzidos comunicam valores, geram identificação instantânea e aproximam o público.
+              Histórias bem contadas criam identificação, despertam emoções e aproximam marcas de pessoas de forma genuína.
             </p>
           </div>
 
@@ -57,10 +57,10 @@ export const Positioning: React.FC = () => {
               <Film className="w-4 h-4" />
             </div>
             <h3 className="font-serif text-xl font-medium text-[#F7F5F1] mb-2">
-              Percepção de Valor
+              Valor que se Percebe
             </h3>
             <p className="text-xs sm:text-sm text-[#EAE5DC]/70 font-light leading-relaxed">
-              O acabamento audiovisual reflete diretamente a qualidade, o posicionamento e o prestígio da sua marca.
+              Cada escolha visual comunica algo. Da captação à edição, o cuidado com os detalhes fortalece a identidade da marca e transmite a qualidade que ela deseja representar.
             </p>
           </div>
         </div>

@@ -23,6 +23,8 @@ export const About: React.FC = () => {
                 <img
                   src={siteConfig.media.portrait}
                   alt="Danieli Tulio — Videomaker e Storymaker"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-[40%_30%] transition-transform duration-700 ease-out group-hover:scale-105"
                 />

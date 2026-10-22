@@ -30,33 +30,33 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Testimonials 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {siteConfig.testimonials.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col justify-between p-8 rounded-xl bg-[#F7F5F1] border border-[#DEDAD2] shadow-xs"
-            >
-              <div>
-                <Quote className="w-8 h-8 text-[#C4A77D]/60 mb-5" />
-                <p className="text-sm sm:text-base text-[#24231F] font-light italic leading-relaxed mb-6">
-                  “{item.quote}”
-                </p>
+        <div
+          className="testimonials-marquee"
+          role="region"
+          aria-label="Depoimentos sobre o trabalho da Danieli"
+          aria-roledescription="carrossel de depoimentos"
+        >
+          <div className="testimonials-marquee-track">
+            {[false, true].map((isDuplicate) => (
+              <div
+                key={isDuplicate ? 'duplicate' : 'original'}
+                className="testimonials-marquee-group"
+                aria-hidden={isDuplicate || undefined}
+              >
+                {siteConfig.testimonials.map((item) => (
+                  <article
+                    key={item.id}
+                    className="flex min-h-64 w-[min(84vw,360px)] shrink-0 flex-col rounded-xl bg-[#F7F5F1] p-7 sm:min-h-72 sm:w-[380px] sm:p-8"
+                  >
+                    <Quote className="mb-5 h-7 w-7 text-[#C4A77D]/70" aria-hidden="true" />
+                    <p className="text-sm leading-relaxed text-[#77736C]">
+                      “{item.quote}”
+                    </p>
+                  </article>
+                ))}
               </div>
-
-              <div className="pt-6 border-t border-[#DEDAD2]/50">
-                <p className="font-serif text-lg font-medium text-[#24231F]">
-                  {item.author}
-                </p>
-                {/* Clean unboxed metadata with typographic separators */}
-                <div className="flex items-center gap-2 text-xs text-[#77736C] mt-0.5">
-                  <span>{item.role}</span>
-                  <span aria-hidden="true" className="text-[#C4A77D]">·</span>
-                  <span className="text-[11px] font-sans">{item.projectType}</span>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

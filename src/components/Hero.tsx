@@ -1,43 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { siteConfig, buildWhatsAppLink } from '../config/siteData';
-import { Volume2, VolumeX, Play, Pause, ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
-interface HeroProps {
-  onOpenVideoModal: (videoUrl: string, title: string) => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenVideoModal }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    // Respect prefers-reduced-motion
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mediaQuery.matches && videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  }, []);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
+export const Hero: React.FC = () => {
   const scrollToPortfolio = (e: React.MouseEvent) => {
     e.preventDefault();
     const elem = document.querySelector('#portfolio');
@@ -55,17 +20,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenVideoModal }) => {
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Quiet Category Kicker */}
             <div className="flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-[#77736C] mb-4">
-              <span>Videomaker Curitiba</span>
-              <span aria-hidden="true" className="text-[#C4A77D]">·</span>
-              <span>Storymaker</span>
-              <span aria-hidden="true" className="text-[#C4A77D]">·</span>
               <span>Danieli Tulio</span>
+              <span aria-hidden="true" className="text-[#C4A77D]">·</span>
+              <span>Produção audiovisual em Curitiba</span>
             </div>
 
             {/* Main Editorial Headline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#24231F] leading-[1.12] mb-6 [text-wrap:balance]">
-              Sua história{' '}
-              <span className="italic font-normal text-[#24231F]/90">merece ser vista.</span>
+              Videomaker e Storymaker{' '}
+              <span className="italic font-normal text-[#24231F]/90">em Curitiba.</span>
             </h1>
 
             {/* Complementary Text */}
@@ -102,79 +65,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenVideoModal }) => {
             </div>
           </div>
 
-          {/* Right Column: Cinematic Video / Media Showcase */}
+          {/* Right Column: Cinematic Media Showcase */}
           <div className="lg:col-span-6 relative">
             <div className="relative group rounded-xl overflow-hidden border border-[#DEDAD2] bg-[#24231F] shadow-lg aspect-video sm:aspect-[16/10] lg:aspect-video flex items-center justify-center">
-              {/* HTML5 Optimized Video Loop with Poster Fallback */}
-              {!videoError ? (
-                <video
-                  ref={videoRef}
-                  poster={siteConfig.media.heroBanner}
-                  autoPlay
-                  loop
-                  muted={isMuted}
-                  playsInline
-                  preload="auto"
-                  onError={() => setVideoError(true)}
-                  className="w-full h-full object-cover"
-                >
-                  <source src={siteConfig.media.heroVideoUrl} type="video/quicktime" />
-                  <source src={siteConfig.media.heroVideoUrl} type="video/mp4" />
-                  Seu navegador não suporta a reprodução deste vídeo.
-                </video>
-              ) : (
-                <img
-                  src={siteConfig.media.heroBanner}
-                  alt="Produção audiovisual cinematográfica por Danieli Tulio"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-              )}
+              <img
+                src={siteConfig.media.heroBanner}
+                alt="Produção audiovisual cinematográfica por Danieli Tulio"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
 
               {/* Cinematic Vignette Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-              {/* Video Controls Toolbar */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white/90 z-10">
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={togglePlay}
-                    className="p-2 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-colors text-white focus:outline-none"
-                    aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
-                  >
-                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                  </button>
-
-                  <button
-                    onClick={toggleMute}
-                    className="p-2 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-colors text-white focus:outline-none"
-                    aria-label={isMuted ? 'Ativar som' : 'Desativar som'}
-                  >
-                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-                  </button>
-                  <span className="text-[11px] font-sans text-white/80 hidden sm:inline-block ml-1">
-                    Showreel em reprodução
-                  </span>
-                </div>
-
-                {/* Lightbox Trigger */}
-                <button
-                  onClick={() =>
-                    onOpenVideoModal(
-                      siteConfig.media.heroVideoUrl,
-                      'Showreel Institucional — Videomaker Curitiba'
-                    )
-                  }
-                  className="text-[11px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white transition-colors cursor-pointer"
-                >
-                  Assistir em tela cheia
-                </button>
-              </div>
-
               {/* Subtle Editorial Stamp on Top-Right */}
               <div className="absolute top-4 right-4 z-10">
                 <span className="text-[10px] font-medium tracking-widest uppercase px-2.5 py-1 rounded bg-black/50 backdrop-blur-md text-[#EAE5DC] border border-white/10">
-                  Videomaker Curitiba · Showreel
+                  Videomaker Curitiba · Produção Audiovisual
                 </span>
               </div>
             </div>
