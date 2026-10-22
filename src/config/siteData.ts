@@ -253,7 +253,8 @@ export const siteConfig = {
   // Informações da Agência de Desenvolvimento
   agency: {
     name: 'Nexmi.Web',
-    tagline: 'Desenvolvido por Nexmi.Web',
+    tagline: 'Site feito pelo Nexmi.Web',
+    url: 'https://instagram.com/nexmi.web',
   },
 
   // Lista de checagem de dados que a cliente precisará fornecer para publicação final

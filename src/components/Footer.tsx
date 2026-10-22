@@ -129,8 +129,16 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-[11px] text-[#EAE5DC]/50">
-              Desenvolvido por <span className="text-[#EAE5DC]/80 font-medium">{siteConfig.agency.name}</span>
+            <span className="text-xs text-[#EAE5DC]/60">
+              Site feito pelo{' '}
+              <a
+                href="https://instagram.com/nexmi.web"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C4A77D] hover:text-white font-medium transition-colors underline underline-offset-2"
+              >
+                Nexmi.Web
+              </a>
             </span>
 
             <button
