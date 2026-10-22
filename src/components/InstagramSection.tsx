@@ -17,7 +17,7 @@ export const InstagramSection: React.FC = () => {
     },
     {
       img: siteConfig.media.backstageShowcase,
-      alt: 'Bastidores de iluminação de set',
+      alt: 'Bastidores de gravação externa com Danieli Tulio',
       aspect: 'aspect-[3/4]',
     },
     {

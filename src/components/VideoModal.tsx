@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { PortfolioItem, buildWhatsAppLink } from '../config/siteData';
-import { X, ArrowUpRight, Film, Check } from 'lucide-react';
+import { X, ArrowUpRight, Film, Check, Camera } from 'lucide-react';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -39,11 +39,14 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
   if (!isOpen) return null;
 
-  const title = project?.title || customTitle || 'Reprodução de Vídeo';
+  const isPhoto = project?.mediaType === 'photo';
+  const title = project?.title || customTitle || (isPhoto ? 'Fotografia' : 'Reprodução de Vídeo');
   const videoSrc = project?.videoUrl || customVideoUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
   const poster = project?.coverImage;
 
-  const whatsappMessage = `Olá Danieli! Assisti ao projeto "${title}" no seu site e gostaria de saber se podemos desenvolver algo semelhante para a minha marca.`;
+  const whatsappMessage = isPhoto
+    ? `Olá Danieli! Vi a foto "${title}" no seu site e gostaria de saber se podemos desenvolver uma produção fotográfica e audiovisual semelhante para a minha marca.`
+    : `Olá Danieli! Assisti ao projeto "${title}" no seu site e gostaria de saber se podemos desenvolver algo semelhante para a minha marca.`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
@@ -55,37 +58,56 @@ export const VideoModal: React.FC<VideoModalProps> = ({
       >
         {/* Top Header Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#24231F]">
-          <div className="flex items-center gap-2">
-            <Film className="w-4 h-4 text-[#C4A77D]" />
+          <div className="flex items-center gap-2.5">
+            {isPhoto ? (
+              <Camera className="w-4 h-4 text-[#C4A77D]" />
+            ) : (
+              <Film className="w-4 h-4 text-[#C4A77D]" />
+            )}
             <h3 id="video-modal-title" className="font-serif text-lg sm:text-xl font-medium text-white truncate max-w-md">
               {title}
             </h3>
+            {isPhoto && (
+              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[#C4A77D]/20 text-[#C4A77D] border border-[#C4A77D]/30">
+                Fotografia
+              </span>
+            )}
           </div>
 
           <button
             onClick={onClose}
             className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
-            aria-label="Fechar reprodutor de vídeo"
+            aria-label={isPhoto ? 'Fechar visualizador de foto' : 'Fechar reprodutor de vídeo'}
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        {/* Video Player Area */}
-        <div className="relative bg-black flex items-center justify-center overflow-hidden flex-1 min-h-[300px] sm:min-h-[460px]">
-          <video
-            ref={videoRef}
-            poster={poster}
-            controls
-            autoPlay
-            playsInline
-            className="w-full max-h-[65vh] object-contain"
-          >
-            <source src={videoSrc} type="video/quicktime" />
-            <source src={videoSrc} type="video/mp4" />
-            Seu navegador não suporta este formato de vídeo.
-          </video>
-        </div>
+        {/* Media Container: Photo vs Video */}
+        {isPhoto ? (
+          <div className="relative bg-[#0E0D0C] flex items-center justify-center p-4 sm:p-6 overflow-hidden flex-1 min-h-[350px] sm:min-h-[500px]">
+            <img
+              src={project?.coverImage}
+              alt={title}
+              className="max-h-[68vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl"
+            />
+          </div>
+        ) : (
+          <div className="relative bg-black flex items-center justify-center overflow-hidden flex-1 min-h-[300px] sm:min-h-[460px]">
+            <video
+              ref={videoRef}
+              poster={poster}
+              controls
+              autoPlay
+              playsInline
+              className="w-full max-h-[65vh] object-contain"
+            >
+              <source src={videoSrc} type="video/quicktime" />
+              <source src={videoSrc} type="video/mp4" />
+              Seu navegador não suporta este formato de vídeo.
+            </video>
+          </div>
+        )}
 
         {/* Bottom Details Bar */}
         <div className="p-6 bg-[#24231F] border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">

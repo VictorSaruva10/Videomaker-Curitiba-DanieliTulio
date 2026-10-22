@@ -15,7 +15,8 @@ export interface PortfolioItem {
   id: string;
   title: string;
   category: 'Marcas & Negócios' | 'Reels & Redes' | 'Eventos & Experiências' | 'Bastidores' | 'Projetos Autorais';
-  aspectRatio: '16:9' | '9:16' | '4:3';
+  mediaType?: 'video' | 'photo';
+  aspectRatio: '16:9' | '9:16' | '4:3' | '3:4';
   coverImage: string;
   videoUrl?: string;
   client: string;
@@ -90,7 +91,7 @@ export const siteConfig = {
     portrait: '/assets/aistudio/DSC00409_Original_4c6acb99.JPG',
     brandShowcase: brandImg,
     reelsVertical: verticalImg,
-    backstageShowcase: backstageImg,
+    backstageShowcase: '/assets/aistudio/bastidores-1_badbe511.jpg',
   },
 
   // Serviços Oferecidos
@@ -164,16 +165,15 @@ export const siteConfig = {
     },
     {
       id: 'proj-3',
-      title: 'Backstage: Luz & Movimento',
+      title: 'Bastidores: Produção & Gravação Externa',
       category: 'Bastidores',
-      aspectRatio: '4:3',
-      coverImage: backstageImg,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
-      client: 'Produção Autoral',
+      mediaType: 'photo',
+      aspectRatio: '3:4',
+      coverImage: '/assets/aistudio/bastidores-1_badbe511.jpg',
+      client: 'Videomaker Curitiba',
       year: '2026',
-      description: 'Registro documental de iluminação e operação de câmera em estúdio, evidenciando o rigor técnico na construção de cada plano.',
-      deliverables: ['Mini-documentário de processo', 'Fotos de bastidores'],
-      isDemo: true,
+      description: 'Registro fotográfico autêntico de bastidores em captação externa, revelando a direção criativa e o processo de gravação em Curitiba.',
+      deliverables: ['Fotografia de bastidores', 'Cobertura de set', 'Registro documental de produção'],
     },
     {
       id: 'proj-4',

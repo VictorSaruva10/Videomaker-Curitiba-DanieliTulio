@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { siteConfig, PortfolioItem } from '../config/siteData';
-import { Play, ArrowUpRight } from 'lucide-react';
+import { Play, ArrowUpRight, Camera } from 'lucide-react';
 
 interface PortfolioProps {
   onSelectProject: (project: PortfolioItem) => void;
@@ -60,15 +60,25 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
 
         {/* Portfolio Dynamic Editorial Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-stretch">
-          {filteredProjects.map((project, index) => {
-            // Give subtle layout rhythm based on index and aspect ratio
+          {filteredProjects.map((project) => {
             const isWide = project.aspectRatio === '16:9';
             const isVertical = project.aspectRatio === '9:16';
+            const isPhotoFormat = project.aspectRatio === '3:4';
+            const isPhoto = project.mediaType === 'photo';
+
             const colSpan = isWide
               ? 'lg:col-span-8'
-              : isVertical
+              : (isVertical || isPhotoFormat)
               ? 'lg:col-span-4'
               : 'lg:col-span-6';
+
+            const aspectClass = isPhotoFormat
+              ? 'aspect-[3/4]'
+              : isVertical
+              ? 'aspect-[9/14] sm:aspect-[9/16]'
+              : isWide
+              ? 'aspect-video'
+              : 'aspect-[4/3]';
 
             return (
               <div
@@ -76,8 +86,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 onClick={() => onSelectProject(project)}
                 className={`${colSpan} group cursor-pointer flex flex-col justify-between rounded-xl overflow-hidden bg-[#F7F5F1] border border-[#DEDAD2] hover:border-[#24231F]/50 transition-all duration-300 hover:shadow-md`}
               >
-                {/* Media Container with Play Prompt */}
-                <div className={`relative overflow-hidden w-full ${isVertical ? 'aspect-[9/14] sm:aspect-[9/16]' : isWide ? 'aspect-video' : 'aspect-[4/3]'} bg-[#24231F]`}>
+                {/* Media Container */}
+                <div className={`relative overflow-hidden w-full ${aspectClass} bg-[#24231F]`}>
                   <img
                     src={project.coverImage}
                     alt={project.title}
@@ -88,16 +98,21 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                   {/* Subtle Gradient Scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                  {/* Play Button Icon Overlay */}
+                  {/* Icon Overlay (Camera for photos, Play for videos) */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-black/40 backdrop-blur-md border border-white/30 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#C4A77D] group-hover:text-[#24231F] transition-all duration-300 shadow-lg">
-                      <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5" />
+                      {isPhoto ? (
+                        <Camera className="w-5 h-5 sm:w-6 sm:h-6" />
+                      ) : (
+                        <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5" />
+                      )}
                     </div>
                   </div>
 
-                  {/* Category Chip (Clean unboxed text in corner) */}
+                  {/* Category Chip */}
                   <div className="absolute top-4 left-4 z-10">
-                    <span className="text-[11px] font-medium tracking-wider uppercase px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-[#EAE5DC] border border-white/10">
+                    <span className="text-[11px] font-medium tracking-wider uppercase px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-[#EAE5DC] border border-white/10 inline-flex items-center gap-1.5">
+                      {isPhoto && <Camera className="w-3 h-3 text-[#C4A77D]" />}
                       {project.category}
                     </span>
                   </div>
@@ -123,7 +138,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                   </div>
 
                   <div className="pt-4 border-t border-[#DEDAD2]/50 flex items-center justify-between text-xs font-medium text-[#24231F]">
-                    <span className="text-[#77736C]">Clique para assistir ao vídeo</span>
+                    <span className="text-[#77736C]">
+                      {isPhoto ? 'Clique para ampliar foto' : 'Clique para assistir ao vídeo'}
+                    </span>
                     <ArrowUpRight className="w-4 h-4 text-[#C4A77D] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
