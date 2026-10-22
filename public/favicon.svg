@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2CA9E" />
+      <stop offset="50%" stop-color="#C4A77D" />
+      <stop offset="100%" stop-color="#9C7F55" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="64" height="64" rx="16" fill="#24231F" />
+  
+  <!-- Subtle Gold Border -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- Cinema Camera Minimalist Icon -->
+  <!-- Camera Body -->
+  <rect x="13" y="22" width="26" height="22" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" />
+  
+  <!-- Lens Cone -->
+  <path d="M39 28 L49 22 L49 44 L39 38 Z" fill="url(#goldGrad)" />
+
+  <!-- Camera Reel Spool Detail Top -->
+  <circle cx="21" cy="18" r="3" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+  <circle cx="31" cy="18" r="3" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+
+  <!-- Center Aperture Point / Play Marker -->
+  <polygon points="23,30 23,36 29,33" fill="url(#goldGrad)" />
+</svg>
