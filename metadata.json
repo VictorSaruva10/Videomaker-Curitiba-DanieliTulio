@@ -1,0 +1,8 @@
+{
+  "name": "Danieli Tulio — Videomaker & Storymaker",
+  "description": "Portfólio audiovisual de Danieli Tulio: videomaker e storymaker com foco em narrativas autênticas, conteúdos cinematográficos para marcas e redes sociais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
