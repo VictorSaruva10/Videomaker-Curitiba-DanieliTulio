@@ -17,6 +17,68 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+.portfolio-carousel-track {
+  --portfolio-slide-width: min(68vw, 380px);
+  padding-inline: max(1rem, calc((100% - var(--portfolio-slide-width)) / 2));
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .portfolio-carousel-track {
+    --portfolio-slide-width: min(52vw, 420px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-carousel-track {
+    --portfolio-slide-width: min(40vw, 520px);
+  }
+}
+
+.portfolio-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-marquee {
+  overflow: hidden;
+}
+
+.testimonials-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: testimonials-marquee-scroll 90s linear infinite;
+}
+
+.testimonials-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.testimonials-marquee:hover .testimonials-marquee-track,
+.testimonials-marquee:focus-within .testimonials-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee {
+    overflow-x: auto;
+  }
+
+  .testimonials-marquee-track {
+    animation: none;
+  }
+}
+
 /* Accessible focus ring style */
 *:focus-visible {
   outline: 2px solid #C4A77D;

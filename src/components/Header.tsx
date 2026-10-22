@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
           </a>
 
           {/* Zone 2: Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide text-[#77736C]">
+          <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide text-[#77736C]">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#F7F5F1] border-b border-[#DEDAD2] px-6 py-6 shadow-xl animate-in fade-in duration-200">
-          <nav className="flex flex-col gap-4 text-sm font-medium text-[#24231F]">
+          <nav aria-label="Navegação móvel" className="flex flex-col gap-4 text-sm font-medium text-[#24231F]">
             {navLinks.map((link) => (
               <a
                 key={link.href}

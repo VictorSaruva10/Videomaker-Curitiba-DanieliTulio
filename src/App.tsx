@@ -19,33 +19,28 @@ import { MessageCircle } from 'lucide-react';
 export default function App() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
-  const [customVideoUrl, setCustomVideoUrl] = useState('');
-  const [customVideoTitle, setCustomVideoTitle] = useState('');
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [checklistModalOpen, setChecklistModalOpen] = useState(false);
 
-  const handleOpenVideoModal = (url: string, title: string) => {
-    setSelectedProject(null);
-    setCustomVideoUrl(url);
-    setCustomVideoTitle(title);
-    setVideoModalOpen(true);
-  };
-
   const handleSelectPortfolioProject = (project: PortfolioItem) => {
     setSelectedProject(project);
-    setCustomVideoUrl('');
-    setCustomVideoTitle('');
     setVideoModalOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-[#F7F5F1] text-[#24231F] font-sans selection:bg-[#C4A77D]/25 selection:text-[#24231F]">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[#24231F] focus:px-4 focus:py-3 focus:text-white"
+      >
+        Pular para o conteúdo
+      </a>
       {/* Top Header */}
       <Header />
 
       {/* Main Content Sections */}
-      <main>
-        <Hero onOpenVideoModal={handleOpenVideoModal} />
+      <main id="conteudo">
+        <Hero />
         <About />
         <Services />
         <Portfolio onSelectProject={handleSelectPortfolioProject} />
@@ -84,8 +79,6 @@ export default function App() {
         isOpen={videoModalOpen}
         onClose={() => setVideoModalOpen(false)}
         project={selectedProject}
-        customVideoUrl={customVideoUrl}
-        customTitle={customVideoTitle}
       />
 
       {/* Privacy Policy Modal */}

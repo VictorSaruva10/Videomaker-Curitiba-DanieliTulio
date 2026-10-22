@@ -15,7 +15,7 @@ export const Services: React.FC = () => {
             Audiovisual que transforma ideias em experiências.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#77736C] font-light max-w-2xl">
-            Do conceito à produção, criamos conteúdos autênticos e estratégicos que valorizam marcas, despertam emoções e geram conexão no digital.
+            Produção audiovisual em Curitiba para marcas e empresas: vídeos institucionais e promocionais, storymaking, Reels e conteúdo para redes sociais.
           </p>
         </div>
 
