@@ -19,9 +19,9 @@ export const Hero: React.FC = () => {
           {/* Left Column: Typographic Hierarchy */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Quiet Category Kicker */}
-            <div className="flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-[#77736C] mb-4">
+            <div className="mb-4 flex flex-col items-start gap-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#77736C] sm:flex-row sm:items-center sm:gap-2 sm:text-xs sm:tracking-[0.2em]">
               <span>Danieli Tulio</span>
-              <span aria-hidden="true" className="text-[#C4A77D]">·</span>
+              <span aria-hidden="true" className="hidden text-[#C4A77D] sm:inline">·</span>
               <span>Produção audiovisual em Curitiba</span>
             </div>
 
