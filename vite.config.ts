@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'path';
 import {defineConfig} from 'vite';
 
@@ -22,7 +22,7 @@ export default defineConfig(() => {
           if (!siteUrl) return html;
 
           const canonicalUrl = `${siteUrl.origin}/`;
-          const imageUrl = `${siteUrl.origin}/assets/aistudio/DSC00409_Original_4c6acb99.JPG`;
+          const imageUrl = `${siteUrl.origin}/assets/danieli-social-optimized.jpg`;
 
           return {
             html,
@@ -31,18 +31,33 @@ export default defineConfig(() => {
               { tag: 'meta', attrs: { property: 'og:url', content: canonicalUrl }, injectTo: 'head' },
               { tag: 'meta', attrs: { property: 'og:image', content: imageUrl }, injectTo: 'head' },
               { tag: 'meta', attrs: { property: 'og:image:alt', content: 'Danieli Tulio, videomaker e storymaker em Curitiba' }, injectTo: 'head' },
+              { tag: 'meta', attrs: { property: 'og:image:type', content: 'image/jpeg' }, injectTo: 'head' },
               { tag: 'meta', attrs: { name: 'twitter:image', content: imageUrl }, injectTo: 'head' },
               { tag: 'meta', attrs: { name: 'twitter:image:alt', content: 'Danieli Tulio, videomaker e storymaker em Curitiba' }, injectTo: 'head' },
             ],
           };
         },
         async writeBundle(options) {
+          const outputDirectory = path.resolve(options.dir ?? 'dist');
+          const sitemapPath = path.join(outputDirectory, 'sitemap.xml');
+          const robotsPath = path.join(outputDirectory, 'robots.txt');
+
           if (!siteUrl) {
+            const robots = await readFile(robotsPath, 'utf8');
+            const robotsWithoutSitemap = robots
+              .split(/\r?\n/)
+              .filter((line) => !line.trimStart().startsWith('Sitemap:'))
+              .join('\n')
+              .trimEnd();
+
+            await Promise.all([
+              rm(sitemapPath, { force: true }),
+              writeFile(robotsPath, `${robotsWithoutSitemap}\n`),
+            ]);
             console.warn('[site-seo] SITE_URL is not configured; canonical URLs and sitemap.xml are omitted until the official domain is set.');
             return;
           }
 
-          const outputDirectory = path.resolve(options.dir ?? 'dist');
           const sitemap = [
             '<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -50,7 +65,6 @@ export default defineConfig(() => {
             '</urlset>',
             '',
           ].join('\n');
-          const robotsPath = path.join(outputDirectory, 'robots.txt');
           const robots = await readFile(robotsPath, 'utf8');
           const robotsWithoutSitemap = robots
             .split(/\r?\n/)

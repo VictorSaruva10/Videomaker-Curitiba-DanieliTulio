@@ -12,14 +12,23 @@ export const About: React.FC = () => {
   };
 
   return (
-    <section id="sobre" className="py-20 lg:py-28 bg-[#EAE5DC]/40 border-y border-[#DEDAD2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="sobre" className="relative isolate overflow-hidden border-y border-[#FFFFFF]/10 bg-[#101010] py-20 lg:py-28">
+      <img
+        src="/assets/foto-camera-making-of.jpg"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover opacity-45"
+      />
+      <div className="absolute inset-0 bg-[#0A0A0A]/75" aria-hidden="true" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Professional Photography of Danieli */}
           <div className="lg:col-span-5 relative order-2 lg:order-1">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Image Frame with Delicate Hairline Border */}
-              <div className="overflow-hidden rounded-xl border border-[#DEDAD2] bg-[#1A1917] shadow-xl aspect-[4/5] sm:aspect-[3/4] group">
+              <div className="overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#101010] shadow-xl aspect-[4/5] sm:aspect-[3/4] group">
                 <img
                   src={siteConfig.media.portrait}
                   alt="Danieli Tulio — Videomaker e Storymaker"
@@ -31,8 +40,8 @@ export const About: React.FC = () => {
               </div>
 
               {/* Editorial Frame Accent */}
-              <div className="mt-4 flex items-center justify-between text-xs text-[#77736C]">
-                <span className="font-serif italic text-sm text-[#24231F]">Danieli Tulio</span>
+              <div className="mt-4 flex items-center justify-between text-xs text-[#AEAEB6]">
+                <span className="font-serif italic text-sm text-[#FFFFFF]">Danieli Tulio</span>
                 <span className="tracking-widest uppercase text-[10px]">Direção Criativa & Audiovisual</span>
               </div>
             </div>
@@ -41,17 +50,17 @@ export const About: React.FC = () => {
           {/* Right Column: Editorial Text Composition */}
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
             {/* Kicker */}
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C4A77D] mb-3 block">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-3 block">
               Sobre mim
             </span>
 
             {/* Headline */}
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#24231F] leading-[1.18] mb-8 [text-wrap:balance]">
+            <h2 className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.18] mb-8 [text-wrap:balance]">
               {siteConfig.professional.aboutTitle}
             </h2>
 
             {/* Presentation Body Copy */}
-            <div className="space-y-5 text-base sm:text-lg text-[#77736C] leading-relaxed font-light">
+            <div className="space-y-5 text-base sm:text-lg text-[#AEAEB6] leading-relaxed font-light">
               <p>
                 {siteConfig.professional.aboutTextParagraph1}
               </p>
@@ -61,29 +70,29 @@ export const About: React.FC = () => {
             </div>
 
             {/* Credentials / Qualifications Strip */}
-            <div className="mt-8 pt-8 border-t border-[#DEDAD2] grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-4 rounded-lg bg-[#F7F5F1] border border-[#DEDAD2]">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#C4A77D] mb-1.5">
+            <div className="mt-8 pt-8 border-t border-[#FFFFFF]/10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] mb-1.5">
                   <GraduationCap className="w-4 h-4" />
                   <span>Formação</span>
                 </div>
-                <p className="font-serif text-lg font-medium text-[#24231F]">
+                <p className="font-serif text-lg font-medium text-[#FFFFFF]">
                   {siteConfig.professional.education}
                 </p>
-                <p className="text-xs text-[#77736C] mt-0.5">
+                <p className="text-xs text-[#AEAEB6] mt-0.5">
                   Especialização e qualificação profissional
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#F7F5F1] border border-[#DEDAD2]">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#C4A77D] mb-1.5">
+              <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] mb-1.5">
                   <Clock className="w-4 h-4" />
                   <span>Experiência</span>
                 </div>
-                <p className="font-serif text-lg font-medium text-[#24231F]">
+                <p className="font-serif text-lg font-medium text-[#FFFFFF]">
                   {siteConfig.professional.experience}
                 </p>
-                <p className="text-xs text-[#77736C] mt-0.5">
+                <p className="text-xs text-[#AEAEB6] mt-0.5">
                   Direção criativa, produção e redes sociais
                 </p>
               </div>
@@ -94,7 +103,7 @@ export const About: React.FC = () => {
               <a
                 href="#servicos"
                 onClick={scrollToServices}
-                className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#24231F] hover:text-[#C4A77D] transition-colors group cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#FFFFFF] hover:text-[#189EA8] transition-colors group cursor-pointer"
               >
                 <span>Conhecer os serviços prestados</span>
                 <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
