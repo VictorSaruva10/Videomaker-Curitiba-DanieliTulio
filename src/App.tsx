@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -21,6 +21,21 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [checklistModalOpen, setChecklistModalOpen] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSelectPortfolioProject = (project: PortfolioItem) => {
     setSelectedProject(project);
@@ -28,10 +43,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F5F1] text-[#24231F] font-sans selection:bg-[#C4A77D]/25 selection:text-[#24231F]">
+    <div className="min-h-screen bg-[#0A0A0A] text-[#FFFFFF] font-sans selection:bg-[#189EA8]/25 selection:text-[#FFFFFF]">
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[#24231F] focus:px-4 focus:py-3 focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[#189EA8] focus:px-4 focus:py-3 focus:text-[#0A0A0A]"
       >
         Pular para o conteúdo
       </a>
@@ -52,22 +67,30 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer
-        onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
-        onOpenChecklistModal={() => setChecklistModalOpen(true)}
-      />
+      <div ref={footerRef}>
+        <Footer
+          onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
+          onOpenChecklistModal={() => setChecklistModalOpen(true)}
+        />
+      </div>
 
       {/* Floating Discrete WhatsApp Quick Action */}
-      <div className="fixed bottom-6 right-6 z-30">
+      <div
+        className={`fixed bottom-6 right-6 z-30 transition-all duration-200 ${
+          footerVisible ? 'translate-y-2 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
+        }`}
+        aria-hidden={footerVisible}
+      >
         <a
           href={buildWhatsAppLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#24231F] text-[#F7F5F1] hover:bg-[#383733] border border-[#C4A77D]/40 shadow-xl transition-all duration-200 hover:scale-105 group"
+          tabIndex={footerVisible ? -1 : 0}
+          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#101010] text-[#FFFFFF] hover:bg-[#189EA8] hover:text-[#0A0A0A] border border-[#189EA8]/40 shadow-xl transition-all duration-200 hover:scale-105 group"
           aria-label="Falar com Danieli no WhatsApp"
         >
-          <div className="w-2 h-2 rounded-full bg-[#C4A77D] group-hover:scale-125 transition-transform" />
-          <MessageCircle className="w-4 h-4 text-[#C4A77D]" />
+          <div className="w-2 h-2 rounded-full bg-[#189EA8] group-hover:scale-125 transition-transform" />
+          <MessageCircle className="w-4 h-4 text-[#189EA8] group-hover:text-[#0A0A0A]" />
           <span className="text-xs font-medium tracking-wide hidden sm:inline-block">
             WhatsApp
           </span>

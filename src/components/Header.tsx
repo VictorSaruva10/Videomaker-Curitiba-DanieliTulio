@@ -36,8 +36,8 @@ export const Header: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F7F5F1]/90 backdrop-blur-md border-b border-[#DEDAD2] py-3.5 shadow-[0_4px_20px_-10px_rgba(36,35,31,0.05)]'
-          : 'bg-[#F7F5F1]/60 backdrop-blur-sm border-b border-[#DEDAD2]/50 py-5'
+          ? 'bg-[#0A0A0A] backdrop-blur-md border-b border-[#FFFFFF]/10 py-3.5 shadow-[0_4px_20px_-10px_rgba(24,158,168,0.12)]'
+          : 'bg-[#0A0A0A] backdrop-blur-sm border-b border-[#FFFFFF]/10 py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,22 +49,22 @@ export const Header: React.FC = () => {
             onClick={(e) => handleNavClick(e, '#inicio')}
             className="group flex flex-col items-start whitespace-nowrap shrink-0 transition-opacity hover:opacity-80"
           >
-            <span className="font-serif text-xl sm:text-2xl font-semibold tracking-wider text-[#24231F]">
+            <span             className="text-gradient font-serif text-xl sm:text-2xl font-semibold tracking-wider">
               {siteConfig.professional.name}
             </span>
-            <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-sans text-[#77736C] font-medium -mt-0.5">
+            <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-sans text-[#AEAEB6] font-medium -mt-0.5">
               Videomaker · Storymaker
             </span>
           </a>
 
           {/* Zone 2: Navigation Links */}
-          <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide text-[#77736C]">
+          <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide text-[#AEAEB6]">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="whitespace-nowrap shrink-0 transition-colors hover:text-[#24231F] relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-[#C4A77D] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+                className="whitespace-nowrap shrink-0 transition-colors hover:text-[#FFFFFF] relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-[#189EA8] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
               >
                 {link.label}
               </a>
@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
               href={buildWhatsAppLink("Olá, Danieli! Conheci seu trabalho pelo site e gostaria de solicitar um orçamento para o meu projeto.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-wider uppercase text-[#24231F] bg-transparent border border-[#24231F]/30 hover:border-[#24231F] hover:bg-[#24231F] hover:text-[#F7F5F1] rounded-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:border-[#189EA8] hover:bg-[#189EA8] hover:text-[#0A0A0A] rounded-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <span>Solicitar orçamento</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#24231F] hover:text-[#C4A77D] transition-colors focus:outline-none"
+              className="p-2 text-[#FFFFFF] hover:text-[#189EA8] transition-colors focus:outline-none"
               aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -99,14 +99,14 @@ export const Header: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#F7F5F1] border-b border-[#DEDAD2] px-6 py-6 shadow-xl animate-in fade-in duration-200">
-          <nav aria-label="Navegação móvel" className="flex flex-col gap-4 text-sm font-medium text-[#24231F]">
+        <div className="lg:hidden bg-[#0A0A0A] border-b border-[#FFFFFF]/10 px-6 py-6 shadow-xl animate-in fade-in duration-200">
+          <nav aria-label="Navegação móvel" className="flex flex-col gap-4 text-sm font-medium text-[#FFFFFF]">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="py-2 border-b border-[#DEDAD2]/40 text-base font-serif tracking-wide hover:text-[#C4A77D] transition-colors"
+                className="py-2 border-b border-[#FFFFFF]/10 text-base font-serif tracking-wide hover:text-[#189EA8] transition-colors"
               >
                 {link.label}
               </a>
@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 text-xs font-medium tracking-wider uppercase text-[#F7F5F1] bg-[#24231F] hover:bg-[#383733] rounded-sm transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 text-xs font-medium tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 rounded-sm transition-colors cursor-pointer"
               >
                 <span>Solicitar orçamento</span>
                 <ArrowUpRight className="w-4 h-4" />

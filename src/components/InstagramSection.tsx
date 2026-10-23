@@ -176,15 +176,15 @@ export const InstagramSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F7F5F1] border-t border-[#DEDAD2]">
+    <section className="py-20 lg:py-28 bg-[#0A0A0A] border-t border-[#FFFFFF]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-[#C4A77D] mb-2">
+            <div className="flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-2">
               <Instagram className="w-3.5 h-3.5" />
               <span>Redes Sociais & Bastidores</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-[#24231F] leading-[1.15]">
+            <h2 className="text-gradient font-serif text-3xl sm:text-4xl font-medium tracking-tight leading-[1.15]">
               Acompanhe o processo criativo no Instagram.
             </h2>
           </div>
@@ -194,7 +194,7 @@ export const InstagramSection: React.FC = () => {
               href={siteConfig.contact.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold tracking-wider uppercase text-[#24231F] bg-transparent border border-[#24231F] hover:bg-[#24231F] hover:text-[#F7F5F1] rounded-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer whitespace-normal text-center sm:whitespace-nowrap"
             >
               <span>Acompanhe meu trabalho no Instagram</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -220,7 +220,7 @@ export const InstagramSection: React.FC = () => {
                 type="button"
                 onClick={(event) => openImage(index, event)}
                 aria-label={`Abrir foto ${index + 1} de ${galleryFrames.length}: ${frame.title}`}
-                className={`group relative aspect-[4/5] w-[68vw] max-w-[380px] shrink-0 snap-center overflow-hidden rounded-xl bg-[#EAE5DC] text-left sm:w-[52vw] sm:max-w-[420px] lg:w-[40vw] lg:max-w-[520px] ${
+                className={`group relative aspect-[4/5] w-[68vw] max-w-[380px] shrink-0 snap-center overflow-hidden rounded-xl bg-[#101010] text-left sm:w-[52vw] sm:max-w-[420px] lg:w-[40vw] lg:max-w-[520px] ${
                   activeIndex === index ? 'opacity-100' : 'opacity-75'
                 }`}
               >
@@ -229,7 +229,7 @@ export const InstagramSection: React.FC = () => {
                   alt={frame.alt}
                   width={800}
                   height={1000}
-                  loading={index < 3 ? 'eager' : 'lazy'}
+                  loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
@@ -248,7 +248,7 @@ export const InstagramSection: React.FC = () => {
               onClick={() => navigateCarousel(-1)}
               disabled={activeIndex === 0}
               aria-label="Fotografia anterior"
-              className="rounded-full p-2 text-[#24231F] transition-colors hover:bg-[#EAE5DC] disabled:cursor-not-allowed disabled:opacity-30"
+              className="rounded-full p-2 text-[#FFFFFF] transition-colors hover:bg-[#101010] disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -265,7 +265,7 @@ export const InstagramSection: React.FC = () => {
                   aria-label={`Ir para foto ${index + 1}: ${frame.title}`}
                   aria-current={activeIndex === index ? 'true' : undefined}
                   className={`h-1.5 rounded-full transition-all motion-reduce:transition-none ${
-                    activeIndex === index ? 'w-7 bg-[#24231F]' : 'w-1.5 bg-[#C4A77D]/50 hover:bg-[#C4A77D]'
+                    activeIndex === index ? 'w-7 bg-[#101010]' : 'w-1.5 bg-[#189EA8]/50 hover:bg-[#189EA8]'
                   }`}
                 />
               ))}
@@ -276,7 +276,7 @@ export const InstagramSection: React.FC = () => {
               onClick={() => navigateCarousel(1)}
               disabled={activeIndex === galleryFrames.length - 1}
               aria-label="Próxima fotografia"
-              className="rounded-full p-2 text-[#24231F] transition-colors hover:bg-[#EAE5DC] disabled:cursor-not-allowed disabled:opacity-30"
+              className="rounded-full p-2 text-[#FFFFFF] transition-colors hover:bg-[#101010] disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -288,7 +288,7 @@ export const InstagramSection: React.FC = () => {
 
         {selectedIndex !== null && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#171614]/95 p-4 sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0A0A0A] p-4 sm:p-8"
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) setSelectedIndex(null);
             }}
@@ -343,13 +343,13 @@ export const InstagramSection: React.FC = () => {
         )}
 
         {/* Profile Handle Reference */}
-        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#77736C]">
+        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#AEAEB6]">
           <span>Perfil oficial:</span>
           <a
             href={siteConfig.contact.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-[#24231F] hover:text-[#C4A77D] transition-colors underline underline-offset-4"
+            className="font-medium text-[#FFFFFF] hover:text-[#189EA8] transition-colors underline underline-offset-4"
           >
             @{siteConfig.contact.instagramHandle}
           </a>

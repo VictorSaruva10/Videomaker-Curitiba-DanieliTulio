@@ -54,21 +54,21 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="video-modal-title"
-        className="relative w-full max-w-5xl h-[95dvh] max-h-[900px] bg-[#1A1917] text-[#F7F5F1] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col"
+        className="relative w-full max-w-5xl h-[95dvh] max-h-[900px] bg-[#101010] text-[#FFFFFF] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col"
       >
         {/* Top Header Bar */}
-        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#24231F]">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#101010]">
           <div className="flex items-center gap-2.5">
             {isPhoto ? (
-              <Camera className="w-4 h-4 text-[#C4A77D]" />
+              <Camera className="w-4 h-4 text-[#189EA8]" />
             ) : (
-              <Film className="w-4 h-4 text-[#C4A77D]" />
+              <Film className="w-4 h-4 text-[#189EA8]" />
             )}
             <h3 id="video-modal-title" className="font-serif text-lg sm:text-xl font-medium text-white truncate max-w-md">
               {title}
             </h3>
             {isPhoto && (
-              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[#C4A77D]/20 text-[#C4A77D] border border-[#C4A77D]/30">
+              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[#189EA8]/20 text-[#189EA8] border border-[#189EA8]/30">
                 Fotografia
               </span>
             )}
@@ -76,7 +76,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
+            className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-[#101010]/10 transition-colors focus:outline-none"
             aria-label={isPhoto ? 'Fechar visualizador de foto' : 'Fechar reprodutor de vídeo'}
           >
             <X className="w-6 h-6" />
@@ -85,7 +85,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
         {/* Media Container: Photo vs Video */}
         {isPhoto ? (
-          <div className="relative bg-[#0E0D0C] flex items-center justify-center p-4 sm:p-6 overflow-hidden flex-1 min-h-0">
+          <div className="relative bg-[#0A0A0A] flex items-center justify-center p-4 sm:p-6 overflow-hidden flex-1 min-h-0">
             <img
               src={project?.coverImage}
               alt={title}
@@ -109,25 +109,25 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         )}
 
         {/* Bottom Details Bar */}
-        <div className="shrink-0 p-4 sm:p-6 bg-[#24231F] border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+        <div className="shrink-0 p-4 sm:p-6 bg-[#101010] border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div className="space-y-1">
             {project && (
-              <div className="flex items-center gap-2 text-xs text-[#EAE5DC]/70">
+              <div className="flex items-center gap-2 text-xs text-[#AEAEB6]">
                 <span>{project.category}</span>
-                <span aria-hidden="true" className="text-[#C4A77D]">·</span>
+                <span aria-hidden="true" className="text-[#189EA8]">·</span>
                 <span>Cliente: {project.client}</span>
-                <span aria-hidden="true" className="text-[#C4A77D]">·</span>
+                <span aria-hidden="true" className="text-[#189EA8]">·</span>
                 <span>Ano: {project.year}</span>
               </div>
             )}
-            <p className="text-xs sm:text-sm text-[#EAE5DC]/90 font-light max-w-2xl">
+            <p className="text-xs sm:text-sm text-[#AEAEB6] font-light max-w-2xl">
               {project?.description || 'Conteúdo audiovisual autoral com direção de fotografia, captação e pós-produção profissional.'}
             </p>
             {project?.deliverables && (
-              <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-[#C4A77D]">
+              <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-[#189EA8]">
                 {project.deliverables.map((del, i) => (
                   <span key={i} className="inline-flex items-center gap-1">
-                    <Check className="w-3 h-3 text-[#C4A77D]" />
+                    <Check className="w-3 h-3 text-[#189EA8]" />
                     {del}
                   </span>
                 ))}
@@ -140,10 +140,10 @@ export const VideoModal: React.FC<VideoModalProps> = ({
               href={buildWhatsAppLink(whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold tracking-wider uppercase text-[#24231F] bg-[#C4A77D] hover:bg-[#d5bc94] transition-colors rounded-sm cursor-pointer whitespace-nowrap shadow-sm"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 transition-colors rounded-sm cursor-pointer whitespace-nowrap shadow-sm"
             >
               <span>Solicitar projeto semelhante</span>
-              <ArrowUpRight className="w-4 h-4 text-[#24231F]" />
+              <ArrowUpRight className="w-4 h-4 text-[#0A0A0A]" />
             </a>
           </div>
         </div>

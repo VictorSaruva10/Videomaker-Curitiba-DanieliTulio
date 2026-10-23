@@ -5,12 +5,6 @@
  * Todos os textos, mídias e dados de contato podem ser atualizados neste arquivo.
  */
 
-import heroImg from '../assets/images/hero_cinematic_production_1792157794867.jpg';
-import portraitImg from '../assets/images/danieli_tulio_portrait_v2_1792625953574.jpg';
-import brandImg from '../assets/images/portfolio_brand_campaign_1792157795520.jpg';
-import verticalImg from '../assets/images/portfolio_reels_vertical_1792157796111.jpg';
-import backstageImg from '../assets/images/portfolio_backstage_production_1792157796284.jpg';
-
 export interface PortfolioItem {
   id: string;
   title: string;
@@ -84,11 +78,7 @@ export const siteConfig = {
 
   // Imagens Principais
   media: {
-    heroBanner: heroImg,
-    portrait: '/assets/aistudio/DSC00409_Original_4c6acb99.JPG',
-    brandShowcase: brandImg,
-    reelsVertical: verticalImg,
-    backstageShowcase: '/assets/aistudio/bastidores-1_badbe511.jpg',
+    portrait: '/assets/danieli-social-optimized.jpg',
   },
 
   // Serviços Oferecidos

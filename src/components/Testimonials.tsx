@@ -4,15 +4,15 @@ import { Quote, ArrowUpRight } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-24 lg:py-32 bg-[#EAE5DC]/40 border-t border-[#DEDAD2]">
+    <section className="py-24 lg:py-32 bg-[#101010] border-t border-[#FFFFFF]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C4A77D] mb-3 block">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-3 block">
               Experiências & Confiança
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#24231F] leading-[1.15] [text-wrap:balance]">
+            <h2 className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] [text-wrap:balance]">
               O que dizem sobre trabalhar com a Danieli.
             </h2>
           </div>
@@ -22,7 +22,7 @@ export const Testimonials: React.FC = () => {
               href={buildWhatsAppLink("Olá, Danieli! Gostaria de um orçamento personalizado para o meu projeto audiovisual.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-medium tracking-wider uppercase text-[#24231F] bg-transparent border border-[#24231F] hover:bg-[#24231F] hover:text-[#F7F5F1] rounded-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
             >
               <span>Solicitar orçamento personalizado</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -46,10 +46,10 @@ export const Testimonials: React.FC = () => {
                 {siteConfig.testimonials.map((item) => (
                   <article
                     key={item.id}
-                    className="flex min-h-64 w-[min(84vw,360px)] shrink-0 flex-col rounded-xl bg-[#F7F5F1] p-7 sm:min-h-72 sm:w-[380px] sm:p-8"
+                    className="flex min-h-64 w-[min(84vw,360px)] shrink-0 flex-col rounded-xl border border-white/10 bg-[#0A0A0A] p-7 sm:min-h-72 sm:w-[380px] sm:p-8"
                   >
-                    <Quote className="mb-5 h-7 w-7 text-[#C4A77D]/70" aria-hidden="true" />
-                    <p className="text-sm leading-relaxed text-[#77736C]">
+                    <Quote className="mb-5 h-7 w-7 text-[#189EA8]/70" aria-hidden="true" />
+                    <p className="text-sm leading-relaxed text-[#AEAEB6]">
                       “{item.quote}”
                     </p>
                   </article>

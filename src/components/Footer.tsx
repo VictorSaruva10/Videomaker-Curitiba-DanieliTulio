@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({
   ];
 
   return (
-    <footer className="bg-[#24231F] text-[#F7F5F1] pt-16 pb-12 border-t border-white/10">
+    <footer className="bg-[#101010] text-[#FFFFFF] pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
@@ -36,10 +36,10 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-wider text-white block">
               {siteConfig.professional.name}
             </span>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C4A77D] font-medium">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#189EA8] font-medium">
               Videomaker · Storymaker
             </p>
-            <p className="text-xs sm:text-sm text-[#EAE5DC]/70 font-light max-w-sm leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#AEAEB6] font-light max-w-sm leading-relaxed">
               Narrativas audiovisuais e conteúdos estratégicos que valorizam a essência da sua marca e conectam pessoas.
             </p>
 
@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
                 href={siteConfig.contact.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#C4A77D] hover:text-[#24231F] border border-white/10 flex items-center justify-center text-white transition-colors"
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#189EA8] hover:text-[#0A0A0A] border border-white/10 flex items-center justify-center text-white transition-colors"
                 aria-label="Instagram de Danieli Tulio"
               >
                 <Instagram className="w-4 h-4" />
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({
                 href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#C4A77D] hover:text-[#24231F] border border-white/10 flex items-center justify-center text-white transition-colors"
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#189EA8] hover:text-[#0A0A0A] border border-white/10 flex items-center justify-center text-white transition-colors"
                 aria-label="WhatsApp de Danieli Tulio"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -68,10 +68,10 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Quick Navigation Links */}
           <div className="lg:col-span-3 space-y-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C4A77D] font-medium mb-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#189EA8] font-medium mb-4">
               Navegação
             </p>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#EAE5DC]/80 font-light">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#AEAEB6] font-light">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -87,10 +87,10 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Contact & Direct Quote via WhatsApp */}
           <div className="lg:col-span-4 space-y-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C4A77D] font-medium mb-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#189EA8] font-medium mb-4">
               Orçamentos & Projetos
             </p>
-            <p className="text-xs sm:text-sm text-[#EAE5DC]/70 font-light">
+            <p className="text-xs sm:text-sm text-[#AEAEB6] font-light">
               Pronto para planejar sua próxima gravação ou cobertura audiovisual?
             </p>
 
@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({
                 href={buildWhatsAppLink("Olá Danieli! Gostaria de falar sobre um orçamento para o meu projeto audiovisual.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-[#24231F] bg-[#C4A77D] hover:bg-[#d8c09a] rounded-sm transition-colors cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 rounded-sm transition-colors cursor-pointer"
               >
                 <span>Solicitar orçamento no WhatsApp</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({
 
               <button
                 onClick={onOpenChecklistModal}
-                className="w-full text-center text-[11px] text-[#EAE5DC]/60 hover:text-white transition-colors pt-1 cursor-pointer underline underline-offset-2"
+                className="w-full text-center text-[11px] text-[#AEAEB6] hover:text-white transition-colors pt-1 cursor-pointer underline underline-offset-2"
               >
                 Painel de dados & checklist do projeto
               </button>
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Sub-Footer Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#EAE5DC]/60 font-light">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#AEAEB6] font-light">
           <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <span>© {currentYear} {siteConfig.professional.name}. Todos os direitos reservados.</span>
             <span aria-hidden="true">·</span>
@@ -129,13 +129,13 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-xs text-[#EAE5DC]/60">
+            <span className="text-xs text-[#AEAEB6]">
               Site feito pelo{' '}
               <a
                 href="https://instagram.com/nexmi.web"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C4A77D] hover:text-white font-medium transition-colors underline underline-offset-2"
+                className="text-[#189EA8] hover:text-white font-medium transition-colors underline underline-offset-2"
               >
                 Nexmi.Web
               </a>
@@ -143,7 +143,7 @@ export const Footer: React.FC<FooterProps> = ({
 
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/15 text-white transition-colors focus:outline-none"
+              className="p-2 rounded-full bg-[#101010]/5 hover:bg-[#101010]/15 text-white transition-colors focus:outline-none"
               aria-label="Voltar ao topo da página"
             >
               <ArrowUp className="w-4 h-4" />
