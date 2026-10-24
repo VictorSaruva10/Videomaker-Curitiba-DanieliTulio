@@ -41,7 +41,7 @@ html {
 
 @media (max-width: 639px) {
   .hero-background {
-    transform: scale(2.6);
+    transform: scale(1.8);
     transform-origin: center 38%;
     object-position: 58% 38%;
   }
