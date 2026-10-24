@@ -10,9 +10,9 @@ export const Process: React.FC = () => {
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="section-background-image absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-[#0A0A0A]/80" aria-hidden="true" />
+      <div className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/80" aria-hidden="true" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 lg:mb-24">

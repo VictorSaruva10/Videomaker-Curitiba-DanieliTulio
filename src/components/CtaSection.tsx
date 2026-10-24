@@ -11,9 +11,9 @@ export const CtaSection: React.FC = () => {
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="section-background-image absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-[#0A0A0A]/75" aria-hidden="true" />
+      <div className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/75" aria-hidden="true" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span className="text-xs font-medium tracking-[0.25em] uppercase text-[#189EA8] mb-4 block">
           Contato Direto
