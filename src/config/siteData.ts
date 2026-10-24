@@ -141,7 +141,7 @@ export const siteConfig = {
       title: 'Lojão da Felicidade — Vídeo de Marca',
       category: 'Reels & Redes',
       aspectRatio: '9:16',
-      coverImage: '/assets/lojaodaffelicidade-cover.png',
+      coverImage: '/assets/lojaodaffelicidade-cover-optimized.jpg',
       coverFit: 'contain',
       videoUrl: '/assets/lojaodaffelicidade.mp4',
       client: 'Lojão da Felicidade',
