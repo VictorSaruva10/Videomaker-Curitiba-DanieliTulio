@@ -15,6 +15,8 @@ export const Hero: React.FC = () => {
     <section id="inicio" className="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-[#0A0A0A] pt-32 pb-16 lg:pt-40 lg:pb-24">
       <img
         src="/assets/hero-background-optimized.jpg"
+        srcSet="/assets/hero-background-mobile.jpg 900w, /assets/hero-background-optimized.jpg 1500w"
+        sizes="100vw"
         alt=""
         aria-hidden="true"
         loading="eager"
