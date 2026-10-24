@@ -22,7 +22,7 @@ export const Hero: React.FC = () => {
         decoding="async"
         className="hero-background absolute inset-0 h-full w-full object-cover object-[center_38%] brightness-110"
       />
-      <div className="absolute inset-0 bg-[#0A0A0A]/40 sm:bg-gradient-to-r sm:from-[#0A0A0A]/70 sm:via-[#0A0A0A]/28 sm:to-[#0A0A0A]/5" aria-hidden="true" />
+      <div className="hero-background-overlay absolute inset-0" aria-hidden="true" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/35 via-transparent to-[#0A0A0A]/5" aria-hidden="true" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Main Editorial Headline */}
-            <h1 className="text-gradient font-serif text-[2.6rem] sm:text-5xl lg:text-7xl font-medium tracking-tight leading-[1.12] mb-6 [text-wrap:balance]">
+            <h1 className="text-gradient font-serif text-[2.9rem] sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.08] mb-6 [text-wrap:balance]">
               Videomaker e Storymaker{' '}
               <span className="italic font-normal">em Curitiba.</span>
             </h1>
