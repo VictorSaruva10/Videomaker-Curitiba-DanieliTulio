@@ -30,11 +30,30 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
+.hero-background-overlay {
+  background: linear-gradient(
+    90deg,
+    rgb(10 10 10 / 76%) 0%,
+    rgb(10 10 10 / 48%) 48%,
+    rgb(10 10 10 / 8%) 100%
+  );
+}
+
 @media (max-width: 639px) {
   .hero-background {
     transform: scale(2.6);
     transform-origin: center 38%;
-    object-position: center 38%;
+    object-position: 58% 38%;
+  }
+
+  .hero-background-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgb(10 10 10 / 72%) 0%,
+      rgb(10 10 10 / 58%) 48%,
+      rgb(10 10 10 / 18%) 82%,
+      rgb(10 10 10 / 28%) 100%
+    );
   }
 
   .section-background-image {
