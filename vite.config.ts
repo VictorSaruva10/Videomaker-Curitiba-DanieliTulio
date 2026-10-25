@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { readFile, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'path';
 import {defineConfig} from 'vite';
 
@@ -11,8 +11,73 @@ if (siteUrl && (siteUrl.protocol !== 'https:' || siteUrl.pathname !== '/' || sit
   throw new Error('SITE_URL must be the official HTTPS origin, for example https://www.example.com');
 }
 
-export default defineConfig(() => {
+async function collectSourceFiles(directory: string): Promise<string[]> {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nestedFiles = await Promise.all(entries.map(async (entry) => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return collectSourceFiles(entryPath);
+    return /\.(?:html|[jt]sx?|css)$/i.test(entry.name) ? [entryPath] : [];
+  }));
+
+  return nestedFiles.flat();
+}
+
+async function copyReferencedPublicAssets(outputDirectory: string, generatedFiles: Set<string>) {
+  const publicDirectory = path.resolve('public');
+  const references = new Set(['favicon.svg', 'robots.txt']);
+  const copiedAssets = new Set<string>();
+  const sourceFiles = [
+    path.resolve('index.html'),
+    ...await collectSourceFiles(path.resolve('src')),
+  ];
+
+  for (const sourceFile of sourceFiles) {
+    const content = await readFile(sourceFile, 'utf8');
+    for (const match of content.matchAll(/\/assets\/([^'"`\s)<>]+)/g)) {
+      const reference = decodeURIComponent(match[1].replace(/[?#].*$/, ''));
+      const normalizedReference = path.posix.normalize(reference);
+      if (normalizedReference === '..' || normalizedReference.startsWith('../') || path.posix.isAbsolute(normalizedReference)) {
+        throw new Error(`Invalid public asset reference: /assets/${reference}`);
+      }
+      const publicAsset = path.posix.join('assets', normalizedReference);
+      references.add(publicAsset);
+      copiedAssets.add(publicAsset);
+    }
+  }
+
+  await Promise.all([...references].map(async (reference) => {
+    const sourceFile = path.resolve(publicDirectory, reference);
+    const destinationFile = path.resolve(outputDirectory, reference);
+    await mkdir(path.dirname(destinationFile), { recursive: true });
+    await copyFile(sourceFile, destinationFile);
+  }));
+
+  const retainedFiles = new Set([...generatedFiles, ...copiedAssets]);
+  const outputAssetsDirectory = path.join(outputDirectory, 'assets');
+  async function removeStaleAssets(directory: string) {
+    const entries = await readdir(directory, { withFileTypes: true });
+    await Promise.all(entries.map(async (entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        await removeStaleAssets(entryPath);
+        return;
+      }
+
+      const relativePath = path.relative(outputDirectory, entryPath).split(path.sep).join('/');
+      if (!retainedFiles.has(relativePath)) await rm(entryPath);
+    }));
+  }
+
+  await removeStaleAssets(outputAssetsDirectory);
+}
+
+export default defineConfig(({ command }) => {
   return {
+    publicDir: command === 'build' ? false : 'public',
+    build: {
+      copyPublicDir: false,
+      emptyOutDir: true,
+    },
     plugins: [
       react(),
       tailwindcss(),
@@ -37,8 +102,9 @@ export default defineConfig(() => {
             ],
           };
         },
-        async writeBundle(options) {
+        async writeBundle(options, bundle) {
           const outputDirectory = path.resolve(options.dir ?? 'dist');
+          await copyReferencedPublicAssets(outputDirectory, new Set(Object.keys(bundle)));
           const sitemapPath = path.join(outputDirectory, 'sitemap.xml');
           const robotsPath = path.join(outputDirectory, 'robots.txt');
 

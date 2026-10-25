@@ -37,7 +37,7 @@ export const Services: React.FC = () => {
             >
               <div>
                 {/* Top Row: Number & Subtitle */}
-                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#FFFFFF]/10">
+                <div className="flex flex-col items-start gap-2 pb-6 mb-6 border-b border-[#FFFFFF]/10 sm:flex-row sm:items-center sm:justify-between">
                   <span className="font-serif text-3xl font-bold tracking-tight text-[#189EA8]">
                     {service.number}
                   </span>
