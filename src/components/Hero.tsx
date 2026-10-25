@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
               <a
                 href="#portfolio"
                 onClick={scrollToPortfolio}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#FFFFFF]/10 hover:border-[#FFFFFF]/15 hover:bg-[#101010] transition-all duration-200 rounded-sm cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-[#0A0A0A] sm:bg-transparent border border-[#FFFFFF]/10 hover:border-[#FFFFFF]/15 hover:bg-[#101010] transition-all duration-200 rounded-sm cursor-pointer whitespace-nowrap"
               >
                 <span>Explorar portfólio</span>
                 <ArrowDown className="w-3.5 h-3.5 text-[#AEAEB6]" />
