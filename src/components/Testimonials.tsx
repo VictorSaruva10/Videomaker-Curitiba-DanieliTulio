@@ -22,9 +22,9 @@ export const Testimonials: React.FC = () => {
               href={buildWhatsAppLink("Olá, Danieli! Gostaria de um orçamento personalizado para o meu projeto audiovisual.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer"
             >
-              <span>Solicitar orçamento personalizado</span>
+                <span>Solicitar orçamento</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

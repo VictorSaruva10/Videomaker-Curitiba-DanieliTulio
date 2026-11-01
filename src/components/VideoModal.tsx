@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { PortfolioItem, buildWhatsAppLink } from '../config/siteData';
-import { X, ArrowUpRight, Film, Check, Camera } from 'lucide-react';
+import { X, ArrowUpRight, Film, Check, Camera, Instagram } from 'lucide-react';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -135,7 +135,19 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             )}
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 flex flex-wrap items-center justify-end gap-3">
+            {project?.instagramUrl && (
+              <a
+                href={project.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Assistir ao vídeo de ${title} no Instagram`}
+                title="Assistir no Instagram"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-[#189EA8]/50 text-[#189EA8] transition-colors hover:bg-[#189EA8] hover:text-[#0A0A0A]"
+              >
+                <Instagram className="h-5 w-5" aria-hidden="true" />
+              </a>
+            )}
             <a
               href={buildWhatsAppLink(whatsappMessage)}
               target="_blank"

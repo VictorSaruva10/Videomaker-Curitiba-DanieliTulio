@@ -42,18 +42,20 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Strict 3-Zone Top Bar Contract */}
-        <div className="flex items-center justify-between gap-8">
+        <div className="flex items-center justify-between gap-0 sm:gap-8">
           {/* Zone 1: Brand Wordmark */}
           <a
             href="#inicio"
             onClick={(e) => handleNavClick(e, '#inicio')}
-            className="group flex flex-col items-start whitespace-nowrap shrink-0 transition-opacity hover:opacity-80"
+            className="group flex items-center gap-2 sm:gap-3 whitespace-nowrap shrink-0 transition-opacity hover:opacity-80"
           >
-            <span             className="text-gradient font-serif text-xl sm:text-2xl font-semibold tracking-wider">
-              {siteConfig.professional.name}
-            </span>
-            <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-sans text-[#AEAEB6] font-medium -mt-0.5">
-              Videomaker · Storymaker
+            <span className="flex flex-col items-start">
+              <span className="text-gradient font-serif text-xl sm:text-2xl font-semibold tracking-wider">
+                {siteConfig.professional.name}
+              </span>
+              <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-sans text-[#AEAEB6] font-medium -mt-0.5">
+                Videomaker · Storymaker
+              </span>
             </span>
           </a>
 

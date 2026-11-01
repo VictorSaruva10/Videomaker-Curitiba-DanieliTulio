@@ -21,12 +21,12 @@ export const CtaSection: React.FC = () => {
 
         {/* Headline */}
         <h2 className="text-gradient font-serif text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.15] mb-6 [text-wrap:balance]">
-          Vamos transformar sua ideia em conteúdo?
+          Vamos transformar sua ideia em vídeo?
         </h2>
 
         {/* Description */}
         <p className="text-base sm:text-lg text-[#AEAEB6] font-light max-w-2xl mx-auto leading-relaxed mb-10 [text-wrap:balance]">
-          Me conte o que você está imaginando. Vamos conversar sobre a melhor forma de dar vida à sua história.
+          Conte um pouco sobre seu projeto e vamos encontrar o melhor formato para produzir conteúdos que façam sentido para sua marca ou evento.
         </p>
 
         {/* Single Dominant Primary WhatsApp Action */}
@@ -38,15 +38,11 @@ export const CtaSection: React.FC = () => {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-xs font-semibold tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 transition-all duration-200 rounded-sm shadow-md cursor-pointer whitespace-nowrap group"
           >
             <MessageCircle className="w-4 h-4 text-[#0A0A0A]" />
-            <span>Conversar pelo WhatsApp</span>
+            <span>Solicitar orçamento pelo WhatsApp</span>
             <ArrowUpRight className="w-4 h-4 text-[#0A0A0A] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
 
-        {/* Direct Phone / Contact note */}
-        <div className="mt-8 text-xs text-[#AEAEB6]">
-          <span>Atendimento direto · Resposta ágil em horário comercial</span>
-        </div>
       </div>
     </section>
   );

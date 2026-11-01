@@ -28,15 +28,127 @@ export const About: React.FC = () => {
           <div className="lg:col-span-5 relative order-2 lg:order-1">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Image Frame with Delicate Hairline Border */}
-              <div className="overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#101010] shadow-xl aspect-[4/5] sm:aspect-[3/4] group">
+              <div className="about-portrait-frame overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#101010] shadow-xl aspect-[4/5] sm:aspect-[3/4] group">
                 <img
                   src={siteConfig.media.portrait}
                   alt="Danieli Tulio — Videomaker e Storymaker"
                   loading="lazy"
                   decoding="async"
+                  width={900}
+                  height={1125}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-[40%_30%] transition-transform duration-700 ease-out group-hover:scale-105"
                 />
+                <div className="about-portrait-particles absolute inset-0 z-[3]" aria-hidden="true">
+                  <style>{`
+                    .about-portrait-particles {
+                      pointer-events: none;
+                    }
+
+                    .about-portrait-particle {
+                      position: absolute;
+                      display: block;
+                      border-radius: 9999px;
+                      background: #1CA0AA;
+                      box-shadow: 0 0 7px #1CA0AA, 0 0 13px #1CA0AA;
+                      opacity: 0;
+                      animation: about-portrait-particle-drift var(--particle-duration) ease-in-out var(--particle-delay) infinite;
+                    }
+
+                    .about-portrait-particle:nth-of-type(1) {
+                      top: 8%;
+                      left: 5%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 5.4s;
+                      --particle-delay: -1.2s;
+                      --particle-drift-x: 7px;
+                      --particle-drift-y: -15px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(2) {
+                      top: 23%;
+                      right: 4%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 7.3s;
+                      --particle-delay: -3.1s;
+                      --particle-drift-x: -8px;
+                      --particle-drift-y: -9px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(3) {
+                      top: 48%;
+                      left: 3%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 6.2s;
+                      --particle-delay: -4.5s;
+                      --particle-drift-x: 5px;
+                      --particle-drift-y: -19px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(4) {
+                      top: 68%;
+                      right: 5%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 4.9s;
+                      --particle-delay: -0.5s;
+                      --particle-drift-x: -6px;
+                      --particle-drift-y: -10px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(5) {
+                      bottom: 8%;
+                      left: 22%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 7.8s;
+                      --particle-delay: -2.7s;
+                      --particle-drift-x: 10px;
+                      --particle-drift-y: -16px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(6) {
+                      right: 23%;
+                      bottom: 7%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 6.7s;
+                      --particle-delay: -5.2s;
+                      --particle-drift-x: -9px;
+                      --particle-drift-y: -12px;
+                    }
+
+                    @keyframes about-portrait-particle-drift {
+                      0%, 100% {
+                        opacity: 0;
+                        transform: translate3d(0, 5px, 0) scale(0.65);
+                      }
+                      18% {
+                        opacity: 0.72;
+                      }
+                      72% {
+                        opacity: 0.42;
+                        transform: translate3d(var(--particle-drift-x), var(--particle-drift-y), 0) scale(1);
+                      }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                      .about-portrait-particle {
+                        animation: none;
+                        opacity: 0.45;
+                      }
+                    }
+                  `}</style>
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                </div>
               </div>
 
               {/* Editorial Frame Accent */}

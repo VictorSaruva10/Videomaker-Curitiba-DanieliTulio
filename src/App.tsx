@@ -1,26 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Services } from './components/Services';
-import { Portfolio } from './components/Portfolio';
-import { Positioning } from './components/Positioning';
-import { Process } from './components/Process';
-import { Testimonials } from './components/Testimonials';
-import { InstagramSection } from './components/InstagramSection';
-import { CtaSection } from './components/CtaSection';
-import { Footer } from './components/Footer';
-import { VideoModal } from './components/VideoModal';
-import { PrivacyModal } from './components/PrivacyModal';
-import { ClientConfigHelperModal } from './components/ClientConfigHelperModal';
-import { PortfolioItem, buildWhatsAppLink } from './config/siteData';
-import { MessageCircle } from 'lucide-react';
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { About } from "./components/About";
+import { Services } from "./components/Services";
+import { Portfolio } from "./components/Portfolio";
+import { Positioning } from "./components/Positioning";
+import { Process } from "./components/Process";
+import { Testimonials } from "./components/Testimonials";
+import { InstagramSection } from "./components/InstagramSection";
+import { CtaSection } from "./components/CtaSection";
+import { Footer } from "./components/Footer";
+import { PortfolioItem, buildWhatsAppLink } from "./config/siteData";
+import { MessageCircle } from "lucide-react";
 
+const VideoModal = lazy(() =>
+  import("./components/VideoModal").then((module) => ({ default: module.VideoModal })),
+);
 export default function App() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
-  const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
-  const [checklistModalOpen, setChecklistModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(
+    null,
+  );
   const [footerVisible, setFooterVisible] = useState(false);
   const footerRef = useRef<HTMLDivElement>(null);
 
@@ -68,16 +68,15 @@ export default function App() {
 
       {/* Footer */}
       <div ref={footerRef}>
-        <Footer
-          onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
-          onOpenChecklistModal={() => setChecklistModalOpen(true)}
-        />
+        <Footer />
       </div>
 
       {/* Floating Discrete WhatsApp Quick Action */}
       <div
         className={`fixed bottom-6 right-6 z-30 transition-all duration-200 ${
-          footerVisible ? 'translate-y-2 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
+          footerVisible
+            ? "translate-y-2 opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100"
         }`}
         aria-hidden={footerVisible}
       >
@@ -97,24 +96,14 @@ export default function App() {
         </a>
       </div>
 
-      {/* Lightbox / Video Modal */}
-      <VideoModal
-        isOpen={videoModalOpen}
-        onClose={() => setVideoModalOpen(false)}
-        project={selectedProject}
-      />
-
-      {/* Privacy Policy Modal */}
-      <PrivacyModal
-        isOpen={privacyModalOpen}
-        onClose={() => setPrivacyModalOpen(false)}
-      />
-
-      {/* Checklist / Info Modal */}
-      <ClientConfigHelperModal
-        isOpen={checklistModalOpen}
-        onClose={() => setChecklistModalOpen(false)}
-      />
+      <Suspense fallback={null}>
+        {/* Lightbox / Video Modal */}
+        <VideoModal
+          isOpen={videoModalOpen}
+          onClose={() => setVideoModalOpen(false)}
+          project={selectedProject}
+        />
+      </Suspense>
     </div>
   );
 }

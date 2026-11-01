@@ -1,18 +1,24 @@
-import React from 'react';
-import { siteConfig } from '../config/siteData';
+import React from "react";
+import { siteConfig } from "../config/siteData";
 
 export const Process: React.FC = () => {
   return (
-    <section id="processo" className="relative isolate overflow-hidden bg-[#0A0A0A] py-24 lg:py-32">
+    <section
+      id="processo"
+      className="relative isolate overflow-hidden bg-[#0A0A0A] py-24 lg:py-32"
+    >
       <img
-        src="/assets/studio-background-optimized.jpg"
+        src="/assets/cinematografa-estudio-industrial.png"
         alt=""
         aria-hidden="true"
         loading="lazy"
         decoding="async"
         className="section-background-image absolute inset-0 h-full w-full object-cover"
       />
-      <div className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/80" aria-hidden="true" />
+      <div
+        className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/80"
+        aria-hidden="true"
+      />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 lg:mb-24">
@@ -23,7 +29,8 @@ export const Process: React.FC = () => {
             Como funciona a criação do seu projeto.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#AEAEB6] font-light">
-            Um processo fluido, colaborativo e estruturado para garantir que cada detalhe reflita a essência da sua marca.
+            Um processo fluido, colaborativo e estruturado para garantir que
+            cada detalhe reflita a essência da sua marca.
           </p>
         </div>
 
@@ -40,7 +47,9 @@ export const Process: React.FC = () => {
               >
                 {/* Step Number Circle Indicator */}
                 <div className="w-14 h-14 rounded-full bg-[#101010] text-[#189EA8] flex items-center justify-center mb-6 shadow-sm border border-[#FFFFFF]/15">
-                  <span className="font-sans font-bold text-2xl tracking-tight text-[#189EA8]">{step.number}</span>
+                  <span className="font-secondary font-bold text-2xl tracking-tight text-[#189EA8]">
+                    {step.number}
+                  </span>
                 </div>
 
                 {/* Step Title */}
