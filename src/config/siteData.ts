@@ -68,8 +68,7 @@ export const siteConfig = {
     role: "VIDEOMAKER · STORYMAKER",
     signature: "Danieli Tulio · Videomaker & Storymaker",
     tagline: "Sua história merece ser vista.",
-    location:
-      "Curitiba e Região Metropolitana · Disponível para produções em todo o Brasil",
+    location: "Curitiba e Região Metropolitana",
     bioShort:
       "Produção de vídeos para redes sociais e cobertura de eventos como Storymaker, com criatividade, estratégia e narrativas que aproximam marcas e pessoas.",
     aboutTitle: "Sou Danieli Tulio, videomaker e storymaker em Curitiba.",
@@ -125,10 +124,11 @@ export const siteConfig = {
       title: "Storymaker para eventos",
       subtitle: "Cobertura vertical em tempo real",
       description:
-        "Cobertura de eventos com produção de conteúdo vertical, espontâneo e dinâmico, pensado para compartilhar momentos e experiências enquanto acontecem.",
+        "Atendo pequenos eventos e casamentos mais intimistas com produção de conteúdo vertical, espontâneo e dinâmico, registrando momentos e experiências enquanto acontecem.",
       features: [
         "Stories para Instagram",
         "Bastidores e momentos importantes",
+        "Pequenos eventos e casamentos mais intimistas",
         "Cobertura de eventos corporativos",
         "Eventos de marcas e experiências",
         "Conteúdos verticais para publicação durante ou logo após o evento",
@@ -142,23 +142,6 @@ export const siteConfig = {
   // Portfólio Audiovisual
   portfolio: [
     {
-      id: "proj-3",
-      title: "Bastidores: Produção & Gravação Externa",
-      category: "Bastidores",
-      mediaType: "photo",
-      aspectRatio: "3:4",
-      coverImage: "/assets/aistudio/bastidores-1_badbe511.jpg",
-      client: "Videomaker Curitiba",
-      year: "2026",
-      description:
-        "Registro fotográfico autêntico de bastidores em captação externa, revelando a direção criativa e o processo de gravação em Curitiba.",
-      deliverables: [
-        "Fotografia de bastidores",
-        "Cobertura de set",
-        "Registro documental de produção",
-      ],
-    },
-    {
       id: "proj-5",
       title: "Lojão da Felicidade — Vídeo de Marca",
       category: "Reels & Redes",
@@ -166,6 +149,7 @@ export const siteConfig = {
       coverImage: "/assets/stitch.png",
       coverFit: "contain",
       videoUrl: "/assets/videos/lojaodaffelicidade.mp4",
+      instagramUrl: "https://www.instagram.com/reels/DJH36eLxvPY/",
       client: "Lojão da Felicidade",
       year: "2026",
       description: "Produção audiovisual para a marca Lojão da Felicidade.",
@@ -195,23 +179,6 @@ export const siteConfig = {
       "Conteúdo que encanta o olhar, desperta emoções e transforma a maneira como marcas se conectam com pessoas.",
     highlight:
       "Mais do que produzir imagens bonitas, é sobre contar histórias que despertam interesse, traduzem essências e permanecem na memória. Cada detalhe importa quando a intenção é comunicar com autenticidade.",
-    values: [
-      {
-        label: "Atenção que Desperta",
-        description:
-          "Em meio a tantos estímulos, a estética, o ritmo e a criatividade transformam segundos em oportunidades de despertar curiosidade e conquistar olhares.",
-      },
-      {
-        label: "Conexões que Aproximam",
-        description:
-          "Histórias bem contadas criam identificação, despertam emoções e aproximam marcas de pessoas de forma genuína.",
-      },
-      {
-        label: "Valor que se Percebe",
-        description:
-          "Cada escolha visual comunica algo. Da captação à edição, o cuidado com os detalhes fortalece a identidade da marca e transmite a qualidade que ela deseja representar.",
-      },
-    ],
   },
 
   // Etapas de Trabalho
