@@ -24,7 +24,7 @@ async function collectSourceFiles(directory: string): Promise<string[]> {
 
 async function copyReferencedPublicAssets(outputDirectory: string, generatedFiles: Set<string>) {
   const publicDirectory = path.resolve('public');
-  const references = new Set(['assets/favicon.jpg', 'robots.txt']);
+  const references = new Set(['robots.txt']);
   const copiedAssets = new Set<string>();
   const sourceFiles = [
     path.resolve('index.html'),
