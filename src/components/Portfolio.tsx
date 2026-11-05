@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { siteConfig, PortfolioItem, buildWhatsAppLink } from "../config/siteData";
-import { Play, ArrowUpRight, Camera, Instagram, MessageCircle, Heart, Send } from "lucide-react";
+import { Play, ArrowUpRight, Camera, Instagram, MessageCircle, Heart, Send, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PortfolioProps {
   onSelectProject: (project: PortfolioItem) => void;
@@ -15,6 +15,7 @@ type FilterCategory =
 
 export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("Todos");
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const filterOptions: FilterCategory[] = [
     "Todos",
@@ -27,6 +28,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
     activeFilter === "Todos"
       ? siteConfig.portfolio
       : siteConfig.portfolio.filter((item) => item.category === activeFilter);
+
+  const moveCarousel = (direction: -1 | 1) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    carousel.scrollBy({
+      left: direction * carousel.clientWidth * 0.85,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section
@@ -80,25 +90,32 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
           ))}
         </div>
 
-        {/* Portfolio Dynamic Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Horizontal Portfolio Carousel */}
+        <div className="relative">
+          {filteredProjects.length > 1 && (
+            <button
+              type="button"
+              onClick={() => moveCarousel(-1)}
+              aria-label="Projetos anteriores"
+              className="absolute left-2 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-[#189EA8]"
+            >
+              <ChevronLeft className="h-6 w-6" aria-hidden="true" />
+            </button>
+          )}
+          <div
+            ref={carouselRef}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
           {filteredProjects.map((project) => {
-            const isWide = project.aspectRatio === "16:9";
             const isVertical = project.aspectRatio === "9:16";
             const isPhotoFormat = project.aspectRatio === "3:4";
             const isPhoto = project.mediaType === "photo";
-
-            const colSpan = isWide
-              ? "lg:col-span-8"
-              : isVertical || isPhotoFormat
-                ? "lg:col-span-4"
-                : "lg:col-span-6";
 
             const aspectClass = isPhotoFormat
               ? "aspect-[3/4]"
               : isVertical
                 ? "aspect-[9/16]"
-                : isWide
+                : project.aspectRatio === "16:9"
                   ? "aspect-video"
                   : "aspect-[4/3]";
             const canonicalUrl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href;
@@ -126,7 +143,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 role="button"
                 tabIndex={0}
                 aria-label={`${isPhoto ? "Ampliar foto" : "Assistir vídeo"}: ${project.title}`}
-                className={`${colSpan} group cursor-pointer flex flex-col overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#0A0A0A] transition-all duration-300 hover:border-[#FFFFFF]/15 hover:shadow-md`}
+                className="group flex w-[min(82vw,360px)] shrink-0 snap-start cursor-pointer flex-col overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#0A0A0A] transition-all duration-300 hover:border-[#FFFFFF]/15 hover:shadow-md sm:w-[min(46vw,390px)] lg:w-[min(30vw,360px)]"
               >
                 <div className="flex items-center gap-3 border-b border-[#FFFFFF]/10 px-4 py-3.5">
                   <img
@@ -230,6 +247,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               </div>
             );
           })}
+          </div>
+          {filteredProjects.length > 1 && (
+            <button
+              type="button"
+              onClick={() => moveCarousel(1)}
+              aria-label="Próximos projetos"
+              className="absolute right-2 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-[#189EA8]"
+            >
+              <ChevronRight className="h-6 w-6" aria-hidden="true" />
+            </button>
+          )}
         </div>
       </div>
     </section>

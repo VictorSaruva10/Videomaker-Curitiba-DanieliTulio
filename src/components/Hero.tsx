@@ -54,13 +54,13 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Main Editorial Headline */}
-            <h1 className="text-gradient font-serif text-[3.5rem] sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.08] mb-6 [text-wrap:balance]">
+            <h1 className="text-gradient font-serif text-[3.5rem] sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[0.96] sm:leading-[1.08] mb-6 [text-wrap:balance]">
               Vídeos que conectam marcas{" "}
               <span className="italic font-normal">e pessoas.</span>
             </h1>
 
             {/* Complementary Text */}
-            <p className="text-lg sm:text-xl text-[#AEAEB6] leading-relaxed max-w-xl mb-8 font-light">
+            <p className="text-base sm:text-xl text-[#AEAEB6] leading-[1.4] sm:leading-relaxed max-w-xl mb-8 font-light">
               {siteConfig.professional.bioShort}
             </p>
 
