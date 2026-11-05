@@ -13,7 +13,7 @@ export const Process: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster="/assets/cinematografa-estudio-industrial.png"
+        poster="/assets/bastidores-filmagem-cinematografica.png"
         aria-hidden="true"
         className="section-background-image absolute inset-0 h-full w-full object-cover"
       >
