@@ -7,18 +7,12 @@ export const Process: React.FC = () => {
       id="processo"
       className="relative isolate overflow-hidden bg-[#0A0A0A] py-24 lg:py-32"
     >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/assets/bastidores-filmagem-cinematografica.png"
+      <img
+        src="/assets/bastidores-filmagem-cinematografica.png"
+        alt=""
         aria-hidden="true"
         className="section-background-image absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/assets/videos/fundo.mp4" type="video/mp4" />
-      </video>
+      />
       <div
         className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/80"
         aria-hidden="true"

@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { copyFile, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, open, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'path';
 import {defineConfig} from 'vite';
 
@@ -20,6 +20,21 @@ async function collectSourceFiles(directory: string): Promise<string[]> {
   }));
 
   return nestedFiles.flat();
+}
+
+async function assertAssetIsAvailable(sourceFile: string, publicAsset: string) {
+  const file = await open(sourceFile, 'r');
+  try {
+    const header = Buffer.alloc(128);
+    const { bytesRead } = await file.read(header, 0, header.length, 0);
+    if (header.toString('utf8', 0, bytesRead).startsWith('version https://git-lfs.github.com/spec/v1')) {
+      throw new Error(
+        `Asset "${publicAsset}" is a Git LFS pointer, not the actual file. Add the original asset to Git without LFS and redeploy.`,
+      );
+    }
+  } finally {
+    await file.close();
+  }
 }
 
 async function copyReferencedPublicAssets(outputDirectory: string, generatedFiles: Set<string>) {
@@ -48,6 +63,7 @@ async function copyReferencedPublicAssets(outputDirectory: string, generatedFile
   await Promise.all([...references].map(async (reference) => {
     const sourceFile = path.resolve(publicDirectory, reference);
     const destinationFile = path.resolve(outputDirectory, reference);
+    await assertAssetIsAvailable(sourceFile, reference);
     await mkdir(path.dirname(destinationFile), { recursive: true });
     await copyFile(sourceFile, destinationFile);
   }));
