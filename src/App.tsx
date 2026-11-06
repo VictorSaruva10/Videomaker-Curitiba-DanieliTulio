@@ -10,6 +10,7 @@ import { Testimonials } from "./components/Testimonials";
 import { InstagramSection } from "./components/InstagramSection";
 import { CtaSection } from "./components/CtaSection";
 import { Footer } from "./components/Footer";
+import { Reveal } from "./components/Reveal";
 import { PortfolioItem, buildWhatsAppLink } from "./config/siteData";
 import { MessageCircle } from "lucide-react";
 
@@ -56,19 +57,19 @@ export default function App() {
       {/* Main Content Sections */}
       <main id="conteudo">
         <Hero />
-        <About />
-        <Services />
-        <Portfolio onSelectProject={handleSelectPortfolioProject} />
-        <Positioning />
-        <Process />
-        <Testimonials />
-        <InstagramSection />
-        <CtaSection />
+        <Reveal><About /></Reveal>
+        <Reveal><Services /></Reveal>
+        <Reveal><Portfolio onSelectProject={handleSelectPortfolioProject} /></Reveal>
+        <Reveal><Positioning /></Reveal>
+        <Reveal><Process /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><InstagramSection /></Reveal>
+        <Reveal><CtaSection /></Reveal>
       </main>
 
       {/* Footer */}
       <div ref={footerRef}>
-        <Footer />
+        <Reveal><Footer /></Reveal>
       </div>
 
       {/* Floating Discrete WhatsApp Quick Action */}
@@ -85,7 +86,7 @@ export default function App() {
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={footerVisible ? -1 : 0}
-          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#101010] text-[#FFFFFF] hover:bg-[#189EA8] hover:text-[#0A0A0A] border border-[#189EA8]/40 shadow-xl transition-all duration-200 hover:scale-105 group"
+          className="accent-traveling-border flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#101010] text-[#FFFFFF] hover:bg-[#189EA8] hover:text-[#0A0A0A] border border-[#189EA8]/40 shadow-xl transition-all duration-200 hover:scale-105 group"
           aria-label="Falar com Danieli no WhatsApp"
         >
           <div className="w-2 h-2 rounded-full bg-[#189EA8] group-hover:scale-125 transition-transform" />

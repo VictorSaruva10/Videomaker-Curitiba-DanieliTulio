@@ -1,6 +1,7 @@
 import React from "react";
 import { siteConfig } from "../config/siteData";
 import { Sparkles } from "lucide-react";
+import { ScrollText } from "./ScrollText";
 
 export const Positioning: React.FC = () => {
   return (
@@ -13,18 +14,18 @@ export const Positioning: React.FC = () => {
         {/* Subtle Concept Badge */}
         <div className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.25em] uppercase text-[#189EA8] mb-8">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Manifesto & Posicionamento</span>
+          <ScrollText as="span">Manifesto & Posicionamento</ScrollText>
         </div>
 
         {/* Big Expressive Serif Statement */}
-        <blockquote className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl lg:leading-[1.25] font-normal tracking-tight mb-8 [text-wrap:balance]">
-          “{siteConfig.positioning.quote}”
-        </blockquote>
+        <ScrollText as="blockquote" className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl lg:leading-[1.25] font-normal tracking-tight mb-8 [text-wrap:balance]">
+          {`“${siteConfig.positioning.quote}”`}
+        </ScrollText>
 
         {/* Minimalist Complement */}
-        <p className="text-base sm:text-xl text-[#AEAEB6] font-light max-w-3xl mx-auto leading-relaxed mb-16 [text-wrap:balance]">
+        <ScrollText as="p" className="text-base sm:text-xl text-[#AEAEB6] font-light max-w-3xl mx-auto leading-relaxed mb-16 [text-wrap:balance]">
           {siteConfig.positioning.highlight}
-        </p>
+        </ScrollText>
       </div>
     </section>
   );

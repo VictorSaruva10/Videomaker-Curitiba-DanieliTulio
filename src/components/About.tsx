@@ -1,6 +1,7 @@
 import React from 'react';
 import { siteConfig } from '../config/siteData';
 import { ArrowDown, GraduationCap, Clock } from 'lucide-react';
+import { ScrollText } from './ScrollText';
 
 export const About: React.FC = () => {
   const scrollToServices = (e: React.MouseEvent) => {
@@ -121,6 +122,226 @@ export const About: React.FC = () => {
                       --particle-drift-y: -12px;
                     }
 
+                    .about-portrait-particle:nth-of-type(7) {
+                      top: 15%;
+                      left: 28%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 8.2s;
+                      --particle-delay: -2.4s;
+                      --particle-drift-x: -7px;
+                      --particle-drift-y: -18px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(8) {
+                      top: 35%;
+                      right: 14%;
+                      width: 5px;
+                      height: 5px;
+                      --particle-duration: 7.6s;
+                      --particle-delay: -4.1s;
+                      --particle-drift-x: 8px;
+                      --particle-drift-y: -13px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(9) {
+                      top: 57%;
+                      left: 13%;
+                      width: 4px;
+                      height: 4px;
+                      --particle-duration: 6.9s;
+                      --particle-delay: -1.8s;
+                      --particle-drift-x: 9px;
+                      --particle-drift-y: -20px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(10) {
+                      top: 78%;
+                      right: 17%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 8.6s;
+                      --particle-delay: -6.3s;
+                      --particle-drift-x: -8px;
+                      --particle-drift-y: -14px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(11) {
+                      top: 30%;
+                      left: 18%;
+                      width: 6px;
+                      height: 6px;
+                      --particle-duration: 9.1s;
+                      --particle-delay: -3.7s;
+                      --particle-drift-x: 6px;
+                      --particle-drift-y: -17px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(12) {
+                      right: 29%;
+                      bottom: 18%;
+                      width: 4px;
+                      height: 4px;
+                      --particle-duration: 7.9s;
+                      --particle-delay: -5.6s;
+                      --particle-drift-x: -7px;
+                      --particle-drift-y: -16px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(13) {
+                      top: 88%;
+                      left: 39%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 8.8s;
+                      --particle-delay: -2.9s;
+                      --particle-drift-x: 8px;
+                      --particle-drift-y: -12px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(14) {
+                      top: 43%;
+                      left: 7%;
+                      width: 5px;
+                      height: 5px;
+                      --particle-duration: 7.2s;
+                      --particle-delay: -4.8s;
+                      --particle-drift-x: -6px;
+                      --particle-drift-y: -21px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(15) {
+                      top: 5%;
+                      right: 31%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 9.4s;
+                      --particle-delay: -7.1s;
+                      --particle-drift-x: 7px;
+                      --particle-drift-y: -16px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(16) {
+                      top: 12%;
+                      right: 9%;
+                      width: 7px;
+                      height: 7px;
+                      --particle-duration: 9.8s;
+                      --particle-delay: -3.2s;
+                      --particle-drift-x: -8px;
+                      --particle-drift-y: -19px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(17) {
+                      top: 26%;
+                      left: 11%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 7.7s;
+                      --particle-delay: -5.9s;
+                      --particle-drift-x: 8px;
+                      --particle-drift-y: -11px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(18) {
+                      top: 39%;
+                      left: 36%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 8.9s;
+                      --particle-delay: -1.6s;
+                      --particle-drift-x: -7px;
+                      --particle-drift-y: -22px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(19) {
+                      top: 50%;
+                      right: 7%;
+                      width: 6px;
+                      height: 6px;
+                      --particle-duration: 9.2s;
+                      --particle-delay: -6.7s;
+                      --particle-drift-x: 7px;
+                      --particle-drift-y: -15px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(20) {
+                      top: 63%;
+                      left: 27%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 7.4s;
+                      --particle-delay: -2.2s;
+                      --particle-drift-x: -9px;
+                      --particle-drift-y: -18px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(21) {
+                      top: 72%;
+                      left: 8%;
+                      width: 8px;
+                      height: 8px;
+                      --particle-duration: 10.1s;
+                      --particle-delay: -4.4s;
+                      --particle-drift-x: 8px;
+                      --particle-drift-y: -20px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(22) {
+                      right: 8%;
+                      bottom: 5%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 8.1s;
+                      --particle-delay: -6.1s;
+                      --particle-drift-x: -6px;
+                      --particle-drift-y: -13px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(23) {
+                      right: 39%;
+                      bottom: 11%;
+                      width: 5px;
+                      height: 5px;
+                      --particle-duration: 9.6s;
+                      --particle-delay: -2.6s;
+                      --particle-drift-x: 7px;
+                      --particle-drift-y: -17px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(24) {
+                      top: 19%;
+                      left: 43%;
+                      width: 3px;
+                      height: 3px;
+                      --particle-duration: 7.8s;
+                      --particle-delay: -5.3s;
+                      --particle-drift-x: -8px;
+                      --particle-drift-y: -14px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(25) {
+                      top: 84%;
+                      right: 35%;
+                      width: 6px;
+                      height: 6px;
+                      --particle-duration: 9s;
+                      --particle-delay: -3.8s;
+                      --particle-drift-x: -7px;
+                      --particle-drift-y: -19px;
+                    }
+
+                    .about-portrait-particle:nth-of-type(26) {
+                      top: 55%;
+                      left: 44%;
+                      width: 2px;
+                      height: 2px;
+                      --particle-duration: 8.4s;
+                      --particle-delay: -7.4s;
+                      --particle-drift-x: 9px;
+                      --particle-drift-y: -12px;
+                    }
+
                     @keyframes about-portrait-particle-drift {
                       0%, 100% {
                         opacity: 0;
@@ -148,6 +369,26 @@ export const About: React.FC = () => {
                   <span className="about-portrait-particle" />
                   <span className="about-portrait-particle" />
                   <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
+                  <span className="about-portrait-particle" />
                 </div>
               </div>
 
@@ -167,23 +408,26 @@ export const About: React.FC = () => {
             </span>
 
             {/* Headline */}
-            <h2 className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.18] mb-8 [text-wrap:balance]">
+            <ScrollText
+              as="h2"
+              className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.18] mb-8 [text-wrap:balance]"
+            >
               {siteConfig.professional.aboutTitle}
-            </h2>
+            </ScrollText>
 
             {/* Presentation Body Copy */}
             <div className="space-y-5 text-base sm:text-lg text-[#AEAEB6] leading-relaxed font-light">
-              <p>
+              <ScrollText as="p">
                 {siteConfig.professional.aboutTextParagraph1}
-              </p>
-              <p>
+              </ScrollText>
+              <ScrollText as="p">
                 {siteConfig.professional.aboutTextParagraph2}
-              </p>
+              </ScrollText>
             </div>
 
             {/* Credentials / Qualifications Strip */}
             <div className="mt-8 pt-8 border-t border-[#FFFFFF]/10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
+              <div className="about-credential-float accent-traveling-border p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] mb-1.5">
                   <GraduationCap className="w-4 h-4" />
                   <span>Formação</span>
@@ -196,7 +440,7 @@ export const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
+              <div className="about-credential-float about-credential-float-delayed accent-traveling-border p-4 rounded-lg bg-[#0A0A0A] border border-[#FFFFFF]/10">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] mb-1.5">
                   <Clock className="w-4 h-4" />
                   <span>Experiência</span>

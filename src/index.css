@@ -41,6 +41,10 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
+.scroll-reveal-word {
+  display: inline;
+}
+
 .about-portrait-frame {
   position: relative;
   isolation: isolate;
@@ -102,6 +106,10 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-word {
+    will-change: auto;
+  }
+
   .about-portrait-frame::before {
     animation: none;
   }
@@ -114,6 +122,152 @@ html {
     rgb(10 10 10 / 48%) 48%,
     rgb(10 10 10 / 8%) 100%
   );
+}
+
+.hero-background {
+  animation: hero-camera-drift 32s ease-in-out infinite alternate;
+  will-change: scale, translate;
+}
+
+.hero-ambient-light {
+  background: radial-gradient(
+    ellipse at 18% 52%,
+    rgb(24 158 168 / 16%) 0%,
+    rgb(24 158 168 / 5%) 32%,
+    transparent 66%
+  );
+  pointer-events: none;
+}
+
+.hero-cta-float {
+  animation: hero-cta-float 4.2s ease-in-out infinite;
+}
+
+.hero-cta-float-delayed {
+  animation-delay: 1.25s;
+}
+
+.about-credential-float {
+  animation: hero-cta-float 4.2s ease-in-out infinite;
+}
+
+.about-credential-float-delayed {
+  animation-delay: 1.25s;
+}
+
+.accent-traveling-border {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.accent-traveling-border::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--hero-cta-border-angle),
+    transparent 0deg 286deg,
+    rgb(24 158 168 / 45%) 302deg,
+    #189ea8 320deg,
+    #62cdd0 334deg,
+    #ffffff 342deg,
+    #62cdd0 350deg,
+    transparent 360deg
+  );
+  content: "";
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgb(98 205 208 / 85%));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: hero-cta-border-energy 4.5s linear infinite;
+}
+
+.hero-cta-primary::before {
+  filter: drop-shadow(0 0 4px #62cdd0);
+}
+
+.accent-traveling-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+@property --hero-cta-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes hero-cta-border-energy {
+  to {
+    --hero-cta-border-angle: 360deg;
+  }
+}
+
+@keyframes hero-cta-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hero-camera-drift {
+  from {
+    scale: 1.035;
+    translate: -0.35% 0;
+  }
+  to {
+    scale: 1.09;
+    translate: 0.35% 0;
+  }
+}
+
+.section-background-image {
+  animation: section-camera-drift 38s ease-in-out infinite alternate;
+  will-change: scale;
+}
+
+@keyframes section-camera-drift {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.04;
+  }
+}
+
+.portfolio-feature-image {
+  will-change: transform;
+}
+
+a[href^="https://api.whatsapp.com"] {
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+a[href^="https://api.whatsapp.com"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgb(24 158 168 / 22%);
+}
+
+a:hover .lucide-arrow-up-right,
+a:hover .lucide-arrow-down {
+  transform: translate3d(2px, -2px, 0);
+}
+
+.lucide-arrow-up-right,
+.lucide-arrow-down {
+  transition: transform 250ms ease;
 }
 
 @media (max-width: 639px) {
@@ -138,6 +292,8 @@ html {
     height: auto;
     object-fit: contain;
     object-position: center top;
+    animation: none;
+    will-change: auto;
   }
 
   .section-background-overlay {
@@ -147,6 +303,12 @@ html {
       rgb(10 10 10 / 72%) 180px,
       #0A0A0A 380px
     );
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio-parallax-layer {
+    transform: none !important;
   }
 }
 
@@ -220,6 +382,37 @@ html {
 
 /* Reduced motion compliance */
 @media (prefers-reduced-motion: reduce) {
+  .hero-cta-float {
+    animation: none;
+  }
+
+  .about-credential-float {
+    animation: none;
+  }
+
+  .accent-traveling-border::before {
+    animation: none;
+  }
+
+  .hero-background,
+  .section-background-image {
+    animation: none;
+    will-change: auto;
+  }
+
+  .portfolio-parallax-layer {
+    transform: none !important;
+  }
+
+  .portfolio-feature-image {
+    will-change: auto;
+  }
+
+  a[href^="https://api.whatsapp.com"]:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

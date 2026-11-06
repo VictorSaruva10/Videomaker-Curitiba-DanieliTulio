@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
               href={buildWhatsAppLink("Olá, Danieli! Conheci seu trabalho pelo site e gostaria de solicitar um orçamento para o meu projeto.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:border-[#189EA8] hover:bg-[#189EA8] hover:text-[#0A0A0A] rounded-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
+              className="accent-traveling-border inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:border-[#189EA8] hover:bg-[#189EA8] hover:text-[#0A0A0A] rounded-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <span>Solicitar orçamento</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 text-xs font-medium tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 rounded-sm transition-colors cursor-pointer"
+                className="accent-traveling-border w-full flex items-center justify-center gap-2 px-5 py-3 text-xs font-medium tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 rounded-sm transition-colors cursor-pointer"
               >
                 <span>Solicitar orçamento</span>
                 <ArrowUpRight className="w-4 h-4" />

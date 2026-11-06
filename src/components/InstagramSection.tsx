@@ -8,6 +8,7 @@ import {
   Instagram,
   X,
 } from "lucide-react";
+import { ScrollText } from "./ScrollText";
 
 export const InstagramSection: React.FC = () => {
   const galleryFrames = [
@@ -20,11 +21,6 @@ export const InstagramSection: React.FC = () => {
       img: "/assets/IMG_1207.JPG",
       alt: "Danieli registrando uma cena no Jardim Botânico",
       title: "Histórias em movimento",
-    },
-    {
-      img: "/assets/IMG_1222.jpg",
-      alt: "Bastidores de uma gravação acompanhada por Danieli",
-      title: "A beleza dos detalhes",
     },
     {
       img: "/assets/IMG_1264.jpg",
@@ -188,11 +184,11 @@ export const InstagramSection: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-2">
               <Instagram className="w-3.5 h-3.5" />
-              <span>Redes Sociais & Bastidores</span>
+              <ScrollText as="span">Redes Sociais & Bastidores</ScrollText>
             </div>
-            <h2 className="text-gradient font-serif text-3xl sm:text-4xl font-medium tracking-tight leading-[1.15]">
+            <ScrollText as="h2" className="text-gradient font-serif text-3xl sm:text-4xl font-medium tracking-tight leading-[1.15]">
               Acompanhe o processo criativo no Instagram.
-            </h2>
+            </ScrollText>
           </div>
 
           <div>
@@ -200,7 +196,7 @@ export const InstagramSection: React.FC = () => {
               href={siteConfig.contact.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer whitespace-normal text-center sm:whitespace-nowrap"
+              className="accent-traveling-border inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold tracking-wider uppercase text-[#FFFFFF] bg-transparent border border-[#189EA8]/50 hover:bg-[#189EA8] hover:text-[#0A0A0A] hover:border-[#189EA8] rounded-sm transition-all duration-200 cursor-pointer whitespace-normal text-center sm:whitespace-nowrap"
             >
               <span>Acompanhe meu trabalho no Instagram</span>
               <ArrowUpRight className="w-4 h-4" />

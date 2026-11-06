@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { siteConfig, PortfolioItem, buildWhatsAppLink } from "../config/siteData";
 import { Play, ArrowUpRight, Camera, Instagram, MessageCircle, Heart, Send, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { ScrollText } from "./ScrollText";
 
 interface PortfolioProps {
   onSelectProject: (project: PortfolioItem) => void;
@@ -13,9 +15,37 @@ type FilterCategory =
   | "Bastidores"
   | "Projetos Autorais";
 
+const PortfolioCover: React.FC<{ project: PortfolioItem }> = ({ project }) => {
+  const coverRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: coverRef,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-14, 14]);
+
+  return (
+    <motion.div
+      ref={coverRef}
+      className="portfolio-parallax-layer absolute inset-0"
+      style={{ y: shouldReduceMotion ? 0 : y }}
+    >
+      <img
+        src={project.coverImage}
+        alt={project.title}
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        className={`portfolio-feature-image h-full w-full ${project.coverFit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-700 ease-out group-hover:scale-[1.06]`}
+      />
+    </motion.div>
+  );
+};
+
 export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("Todos");
   const carouselRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const filterOptions: FilterCategory[] = [
     "Todos",
@@ -59,16 +89,16 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-3 block">
+            <ScrollText as="span" className="text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-3 block">
               Portfólio Selecionado
-            </span>
-            <h2 className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] [text-wrap:balance]">
+            </ScrollText>
+            <ScrollText as="h2" className="text-gradient font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] [text-wrap:balance]">
               Histórias em movimento.
-            </h2>
-            <p className="mt-3 text-base sm:text-lg text-[#AEAEB6] font-light">
+            </ScrollText>
+            <ScrollText as="p" className="mt-3 text-base sm:text-lg text-[#AEAEB6] font-light">
               Conheça projetos audiovisuais para marcas e conteúdos verticais
               para redes sociais, além de registros dos bastidores de produção.
-            </p>
+            </ScrollText>
           </div>
         </div>
 
@@ -106,7 +136,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
             ref={carouselRef}
             className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-          {filteredProjects.map((project) => {
+          {filteredProjects.map((project, index) => {
             const isVertical = project.aspectRatio === "9:16";
             const isPhotoFormat = project.aspectRatio === "3:4";
             const isPhoto = project.mediaType === "photo";
@@ -127,7 +157,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
             ].filter(Boolean).join("\n");
 
             return (
-              <div
+              <motion.div
                 key={project.id}
                 onClick={(event) => {
                   if (event.target instanceof Element && event.target.closest("a")) return;
@@ -143,6 +173,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 role="button"
                 tabIndex={0}
                 aria-label={`${isPhoto ? "Ampliar foto" : "Assistir vídeo"}: ${project.title}`}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 0.55,
+                  delay: shouldReduceMotion ? 0 : Math.min(index * 0.07, 0.35),
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="group flex w-[min(82vw,360px)] shrink-0 snap-start cursor-pointer flex-col overflow-hidden rounded-xl border border-[#FFFFFF]/10 bg-[#0A0A0A] transition-all duration-300 hover:border-[#FFFFFF]/15 hover:shadow-md sm:w-[min(46vw,390px)] lg:w-[min(30vw,360px)]"
               >
                 <div className="flex items-center gap-3 border-b border-[#FFFFFF]/10 px-4 py-3.5">
@@ -177,14 +215,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 <div
                   className={`relative overflow-hidden w-full ${aspectClass} bg-[#101010]`}
                 >
-                  <img
-                    src={project.coverImage}
-                    alt={project.title}
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    className={`w-full h-full ${project.coverFit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
-                  />
+                  <PortfolioCover project={project} />
 
                   {/* Subtle Gradient Scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
@@ -221,8 +252,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
 
                   <div className="mb-4">
                     <p className="text-sm leading-relaxed text-[#AEAEB6]">
-                      <span className="mr-1 font-semibold text-white">{project.title}</span>
-                      {project.description}
+                      <ScrollText as="span" className="mr-1 font-semibold text-white">
+                        {project.title}
+                      </ScrollText>
+                      <ScrollText as="span">{project.description}</ScrollText>
                     </p>
                     <p className="mt-2 text-xs text-[#AEAEB6]">
                       {project.client} <span aria-hidden="true" className="mx-1 text-[#189EA8]">·</span> {project.year}
@@ -237,14 +270,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(event) => event.stopPropagation()}
-                    className="inline-flex items-center gap-2 rounded-sm border border-[#189EA8]/50 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] transition-colors hover:bg-[#189EA8] hover:text-[#0A0A0A]"
+                    className="accent-traveling-border inline-flex items-center gap-2 rounded-sm border border-[#189EA8]/50 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-[#189EA8] transition-colors hover:bg-[#189EA8] hover:text-[#0A0A0A]"
                   >
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
                     <span>Solicitar projeto semelhante</span>
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
           </div>

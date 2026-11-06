@@ -1,8 +1,28 @@
 import React from "react";
 import { siteConfig, buildWhatsAppLink } from "../config/siteData";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import type { Variants } from "motion/react";
+
+const heroContentVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { delayChildren: 0.15, staggerChildren: 0.12 },
+  },
+};
+
+const heroItemVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export const Hero: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const scrollToPortfolio = (e: React.MouseEvent) => {
     e.preventDefault();
     const elem = document.querySelector("#portfolio");
@@ -33,6 +53,7 @@ export const Hero: React.FC = () => {
         className="hero-background-overlay absolute inset-0"
         aria-hidden="true"
       />
+      <div className="hero-ambient-light absolute inset-0" aria-hidden="true" />
       <div
         className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/35 via-transparent to-[#0A0A0A]/5"
         aria-hidden="true"
@@ -40,9 +61,14 @@ export const Hero: React.FC = () => {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="flex flex-col justify-center">
+          <motion.div
+            className="flex flex-col justify-center"
+            variants={heroContentVariants}
+            initial={shouldReduceMotion ? false : "hidden"}
+            animate={shouldReduceMotion ? false : "visible"}
+          >
             {/* Quiet Category Kicker */}
-            <div className="mb-4 flex flex-col items-start gap-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#AEAEB6] sm:flex-row sm:items-center sm:gap-2 sm:text-xs sm:tracking-[0.2em]">
+            <motion.div variants={heroItemVariants} className="mb-4 flex flex-col items-start gap-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#AEAEB6] sm:flex-row sm:items-center sm:gap-2 sm:text-xs sm:tracking-[0.2em]">
               <span>Danieli Tulio</span>
               <span
                 aria-hidden="true"
@@ -51,26 +77,26 @@ export const Hero: React.FC = () => {
                 ·
               </span>
               <span>Produção audiovisual em Curitiba</span>
-            </div>
+            </motion.div>
 
             {/* Main Editorial Headline */}
-            <h1 className="text-gradient font-serif text-[3.5rem] sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[0.96] sm:leading-[1.08] mb-6 [text-wrap:balance]">
+            <motion.h1 variants={heroItemVariants} className="text-gradient font-serif text-[3.5rem] sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[0.96] sm:leading-[1.08] mb-6 [text-wrap:balance]">
               Vídeos que conectam marcas{" "}
               <span className="italic font-normal">e pessoas.</span>
-            </h1>
+            </motion.h1>
 
             {/* Complementary Text */}
-            <p className="text-base sm:text-xl text-[#AEAEB6] leading-[1.4] sm:leading-relaxed max-w-xl mb-8 font-light">
+            <motion.p variants={heroItemVariants} className="text-base sm:text-xl text-[#AEAEB6] leading-[1.4] sm:leading-relaxed max-w-xl mb-8 font-light">
               {siteConfig.professional.bioShort}
-            </p>
+            </motion.p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <motion.div variants={heroItemVariants} className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-semibold tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 transition-all duration-200 rounded-sm shadow-sm cursor-pointer whitespace-nowrap"
+                className="hero-cta-float accent-traveling-border hero-cta-primary inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-semibold tracking-wider uppercase text-[#0A0A0A] bg-[#189EA8] hover:bg-[#189EA8]/85 transition-all duration-200 rounded-sm shadow-sm cursor-pointer whitespace-nowrap"
               >
                 <span>Solicite um orçamento</span>
                 <ArrowUpRight className="w-4 h-4 text-[#0A0A0A]" />
@@ -79,19 +105,19 @@ export const Hero: React.FC = () => {
               <a
                 href="#portfolio"
                 onClick={scrollToPortfolio}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-[#0A0A0A] sm:bg-transparent border border-[#FFFFFF]/10 hover:border-[#FFFFFF]/15 hover:bg-[#101010] transition-all duration-200 rounded-sm cursor-pointer whitespace-nowrap"
+                className="hero-cta-float hero-cta-float-delayed accent-traveling-border inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-wider uppercase text-[#FFFFFF] bg-[#0A0A0A] sm:bg-transparent border border-[#FFFFFF]/10 hover:border-[#FFFFFF]/15 hover:bg-[#101010] transition-all duration-200 rounded-sm cursor-pointer whitespace-nowrap"
               >
                 <span>Conheça meu trabalho</span>
                 <ArrowDown className="w-3.5 h-3.5 text-[#AEAEB6]" />
               </a>
-            </div>
+            </motion.div>
 
             {/* Location & Authenticity Note */}
-            <div className="mt-8 pt-6 border-t border-[#FFFFFF]/10 flex items-center gap-2 text-xs text-[#AEAEB6]">
+            <motion.div variants={heroItemVariants} className="mt-8 pt-6 border-t border-[#FFFFFF]/10 flex items-center gap-2 text-xs text-[#AEAEB6]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#189EA8]"></span>
               <span>{siteConfig.professional.location}</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
