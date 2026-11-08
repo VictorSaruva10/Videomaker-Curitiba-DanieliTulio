@@ -5,14 +5,11 @@ import { ScrollText } from './ScrollText';
 
 export const CtaSection: React.FC = () => {
   return (
-    <section id="contato" className="relative isolate overflow-hidden border-t border-[#FFFFFF]/10 bg-[#101010] py-24 lg:py-36">
-      <img
-        src="/assets/contact-background-optimized.jpg"
-        alt=""
+    <section id="contato" className="contact-parallax-section relative isolate overflow-hidden border-t border-[#FFFFFF]/10 bg-[#101010] py-24 lg:py-36">
+      <div
+        className="contact-parallax-background absolute inset-0"
         aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="section-background-image absolute inset-0 h-full w-full object-cover"
+        style={{ backgroundImage: "url('/assets/contact-background-optimized.jpg')" }}
       />
       <div className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/75" aria-hidden="true" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

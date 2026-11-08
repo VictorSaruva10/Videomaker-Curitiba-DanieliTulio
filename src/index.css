@@ -45,6 +45,37 @@ html {
   display: inline;
 }
 
+.hero-headline-reservation {
+  visibility: hidden;
+}
+
+.hero-headline-word {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-headline-italic {
+  padding-inline: 0.08em;
+}
+
+.hero-headline-word-reserve {
+  visibility: hidden;
+}
+
+.hero-headline-word-visible {
+  position: absolute;
+  inset: 0 auto auto 0;
+  background-image: linear-gradient(90deg, #189EA8 0%, #62CDD0 45%, #FFFFFF 100%);
+  background-size: var(--hero-headline-gradient-width) var(--hero-headline-gradient-height);
+  background-position: var(--hero-headline-gradient-x) var(--hero-headline-gradient-y);
+  background-clip: text;
+  color: transparent;
+  white-space: pre;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .about-portrait-frame {
   position: relative;
   isolation: isolate;
@@ -115,18 +146,15 @@ html {
   }
 }
 
-.hero-background-overlay {
-  background: linear-gradient(
-    90deg,
-    rgb(10 10 10 / 76%) 0%,
-    rgb(10 10 10 / 48%) 48%,
-    rgb(10 10 10 / 8%) 100%
-  );
+.hero-background-parallax {
+  background-image: url("/assets/hero-background-optimized.jpg");
+  background-position: center 38%;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.hero-background {
-  animation: hero-camera-drift 32s ease-in-out infinite alternate;
-  will-change: scale, translate;
+.hero-background-overlay {
+  background: rgb(10 10 10 / 48%);
 }
 
 .hero-ambient-light {
@@ -218,20 +246,15 @@ html {
   }
 }
 
-@keyframes hero-camera-drift {
-  from {
-    scale: 1.035;
-    translate: -0.35% 0;
-  }
-  to {
-    scale: 1.09;
-    translate: 0.35% 0;
-  }
-}
-
 .section-background-image {
   animation: section-camera-drift 38s ease-in-out infinite alternate;
   will-change: scale;
+}
+
+.contact-parallax-background {
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 @keyframes section-camera-drift {
@@ -270,21 +293,15 @@ a:hover .lucide-arrow-down {
   transition: transform 250ms ease;
 }
 
-@media (max-width: 639px) {
-  .hero-background {
-    transform: scale(1.8);
-    transform-origin: center 14%;
-    object-position: 58% 14%;
+@media (max-width: 767px) {
+  .hero-background-parallax {
+    background-image: url("/assets/hero-background-mobile.jpg");
+    background-attachment: scroll;
+    background-position: 58% 14%;
   }
 
   .hero-background-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgb(10 10 10 / 72%) 0%,
-      rgb(10 10 10 / 58%) 48%,
-      rgb(10 10 10 / 18%) 82%,
-      rgb(10 10 10 / 28%) 100%
-    );
+    background: rgb(10 10 10 / 48%);
   }
 
   .section-background-image {
@@ -294,6 +311,10 @@ a:hover .lucide-arrow-down {
     object-position: center top;
     animation: none;
     will-change: auto;
+  }
+
+  .contact-parallax-background {
+    background-attachment: scroll;
   }
 
   .section-background-overlay {
@@ -394,10 +415,18 @@ a:hover .lucide-arrow-down {
     animation: none;
   }
 
-  .hero-background,
+  .hero-background-parallax,
   .section-background-image {
     animation: none;
     will-change: auto;
+  }
+
+  .hero-background-parallax {
+    background-attachment: scroll;
+  }
+
+  .contact-parallax-background {
+    background-attachment: scroll;
   }
 
   .portfolio-parallax-layer {

@@ -27,11 +27,6 @@ export const InstagramSection: React.FC = () => {
       alt: "Danieli com equipamento de gravação em Curitiba",
       title: "Um dia de criação",
     },
-    {
-      img: siteConfig.media.portrait,
-      alt: "Retrato profissional de Danieli Tulio",
-      title: "Quem conta histórias",
-    },
   ];
   const [activeIndex, setActiveIndex] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
