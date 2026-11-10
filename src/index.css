@@ -313,6 +313,16 @@ a:hover .lucide-arrow-down {
     will-change: auto;
   }
 
+  .process-background-video {
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: none;
+    will-change: auto;
+    filter: brightness(1.15);
+  }
+
   .contact-parallax-background {
     background-attachment: scroll;
   }
@@ -324,6 +334,22 @@ a:hover .lucide-arrow-down {
       rgb(10 10 10 / 72%) 180px,
       #0A0A0A 380px
     );
+  }
+
+  .process-background-overlay {
+    background: rgb(10 10 10 / 30%);
+  }
+
+  .process-copy-backdrop {
+    margin-inline: -1rem;
+    padding: 1rem;
+    background: linear-gradient(
+      90deg,
+      rgb(10 10 10 / 88%) 0%,
+      rgb(10 10 10 / 72%) 78%,
+      rgb(10 10 10 / 55%) 100%
+    );
+    backdrop-filter: blur(6px);
   }
 }
 

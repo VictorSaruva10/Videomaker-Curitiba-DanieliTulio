@@ -29,7 +29,7 @@ export const Process: React.FC = () => {
           setShouldLoadVideo(true);
         }
       },
-      { rootMargin: "300px 0px" },
+      { rootMargin: "0px" },
     );
     observer.observe(section);
 
@@ -58,21 +58,22 @@ export const Process: React.FC = () => {
       <video
         ref={backgroundVideoRef}
         src={shouldLoadVideo ? "/assets/videos/ilha%20do%20mel.mp4" : undefined}
+        poster={shouldLoadVideo ? "/assets/ilha%20do%20mel.png" : undefined}
         aria-hidden="true"
         muted
         loop
         playsInline
-        preload={shouldLoadVideo ? "metadata" : "none"}
+        preload="none"
         onTimeUpdate={restartBeforeEnd}
-        className="section-background-image absolute inset-0 h-full w-full object-cover"
+        className="process-background-video section-background-image absolute inset-0 h-full w-full object-cover"
       />
       <div
-        className="section-background-overlay absolute inset-0 bg-[#0A0A0A]/70"
+        className="process-background-overlay section-background-overlay absolute inset-0 bg-[#0A0A0A]/35"
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16 lg:mb-24">
+        <div className="process-copy-backdrop max-w-2xl mb-16 lg:mb-24">
           <ScrollText as="span" className="text-xs font-medium tracking-[0.2em] uppercase text-[#189EA8] mb-3 block">
             Metodologia & Etapas
           </ScrollText>
