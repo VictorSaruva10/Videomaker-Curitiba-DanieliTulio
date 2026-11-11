@@ -23,10 +23,11 @@ export const InstagramSection: React.FC = () => {
       title: "Histórias em movimento",
     },
     {
-      img: "/assets/IMG_1264.jpg",
+      img: "/assets/IMG.jpeg",
       alt: "Danieli com equipamento de gravação em Curitiba",
       title: "Um dia de criação",
     },
+    
   ];
   const [activeIndex, setActiveIndex] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
