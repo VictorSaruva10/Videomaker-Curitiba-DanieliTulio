@@ -168,7 +168,8 @@ export const siteConfig = {
         'Olá Danieli! Assisti ao projeto "Fachada — Pequenas Festas" no seu site e gostaria de saber se podemos desenvolver algo semelhante para a minha marca.',
       client: "Pequenas Festas",
       year: "2026",
-      description: "Registro vertical da fachada e dos detalhes externos do espaço.",
+      description:
+        "Registro vertical da fachada e dos detalhes externos do espaço.",
       deliverables: ["Fotografia vertical"],
     },
     {
@@ -182,7 +183,8 @@ export const siteConfig = {
       instagramUrl: "https://www.instagram.com/reels/DX7Lp34u1rY/",
       client: "You Estética",
       year: "2026",
-      description: "Produção audiovisual para a campanha de Dia das Mães da You Estética.",
+      description:
+        "Produção audiovisual para a campanha de Dia das Mães da You Estética.",
       deliverables: ["Vídeo de campanha"],
     },
     {
@@ -210,7 +212,8 @@ export const siteConfig = {
       instagramUrl: "https://www.instagram.com/reels/DYryniuRNiv/",
       client: "Projeto autoral",
       year: "2026",
-      description: "Registro vertical dos preparativos de beleza para um casamento.",
+      description:
+        "Registro vertical dos preparativos de beleza para um casamento.",
       deliverables: ["Vídeo vertical"],
     },
     {
@@ -277,10 +280,26 @@ export const siteConfig = {
       aspectRatio: "9:16",
       coverImage: "/assets/bastidores3.png",
       videoUrl: "/assets/videos/bastidores3.mov",
-       instagramUrl: "https://www.instagram.com/videomaker.curitiba/",
+      instagramUrl: "https://www.instagram.com/videomaker.curitiba/",
       client: "Produção audiovisual",
       year: "2026",
-      description: "Um olhar por trás dos bastidores de uma produção audiovisual.",
+      description:
+        "Um olhar por trás dos bastidores de uma produção audiovisual.",
+      deliverables: ["Vídeo vertical"],
+    },
+    {
+      id: "proj-bastidores-2",
+      title: "Bastidores de gravação",
+      category: "Bastidores",
+      mediaType: "video",
+      aspectRatio: "9:16",
+      coverImage: "/assets/bastidores2.png",
+      videoUrl: "/assets/videos/bastidores2.MOV",
+      instagramUrl: "https://www.instagram.com/videomaker.curitiba/",
+      client: "Produção audiovisual",
+      year: "2026",
+      description:
+        "Um olhar por trás dos bastidores de uma produção audiovisual.",
       deliverables: ["Vídeo vertical"],
     },
     {
@@ -297,7 +316,7 @@ export const siteConfig = {
       description: "Vídeo de apresentação da Dra. Ana Paula Tuleski.",
       deliverables: ["Vídeo vertical"],
     },
-     {
+    {
       id: "proj-dra-tatiany-cavalcante",
       title: "Dra. Tatiany Cavalcante",
       category: "Reels & Redes",
