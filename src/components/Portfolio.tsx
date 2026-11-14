@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { siteConfig, PortfolioItem, buildWhatsAppLink } from "../config/siteData";
 import { Play, ArrowUpRight, Camera, Instagram, MessageCircle, Heart, Send, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
@@ -7,13 +7,6 @@ import { ScrollText } from "./ScrollText";
 interface PortfolioProps {
   onSelectProject: (project: PortfolioItem) => void;
 }
-
-type FilterCategory =
-  | "Todos"
-  | "Reels & Redes"
-  | "Eventos & Experiências"
-  | "Bastidores"
-  | "Projetos Autorais";
 
 const PortfolioCover: React.FC<{ project: PortfolioItem }> = ({ project }) => {
   const coverRef = useRef<HTMLDivElement>(null);
@@ -43,21 +36,9 @@ const PortfolioCover: React.FC<{ project: PortfolioItem }> = ({ project }) => {
 };
 
 export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>("Todos");
   const carouselRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-
-  const filterOptions: FilterCategory[] = [
-    "Todos",
-    "Reels & Redes",
-    "Eventos & Experiências",
-    "Bastidores",
-  ];
-
-  const filteredProjects =
-    activeFilter === "Todos"
-      ? siteConfig.portfolio
-      : siteConfig.portfolio.filter((item) => item.category === activeFilter);
+  const filteredProjects = siteConfig.portfolio;
 
   const moveCarousel = (direction: -1 | 1) => {
     const carousel = carouselRef.current;
@@ -100,24 +81,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               para redes sociais, além de registros dos bastidores de produção.
             </ScrollText>
           </div>
-        </div>
-
-        {/* Filter Controls (Functional segmented button tabs - Zero-pill discipline) */}
-        <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#0A0A0A] rounded-lg border border-[#FFFFFF]/10 mb-12 w-fit max-w-full overflow-x-auto">
-          {filterOptions.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              aria-pressed={activeFilter === filter}
-              className={`px-4 py-2 text-xs font-medium rounded-md transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-                activeFilter === filter
-                  ? "bg-[#189EA8] text-[#0A0A0A] shadow-sm"
-                  : "text-[#AEAEB6] hover:text-[#FFFFFF] hover:bg-[#101010]"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
         </div>
 
         {/* Horizontal Portfolio Carousel */}
