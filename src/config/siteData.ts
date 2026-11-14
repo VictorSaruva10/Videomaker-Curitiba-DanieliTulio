@@ -230,20 +230,7 @@ export const siteConfig = {
       description: "Produção audiovisual para a Michelangelo Mármores.",
       deliverables: ["Vídeo vertical"],
     },
-    {
-      id: "proj-roca-minha-morada",
-      title: "Roca Minha Morada",
-      category: "Reels & Redes",
-      mediaType: "video",
-      aspectRatio: "9:16",
-      coverImage: "/assets/roca_minha_morada.png",
-      videoUrl: "/assets/videos/roca_minha_morada.mp4",
-      instagramUrl: "https://www.instagram.com/reels/DcZk41SAuKy/",
-      client: "Roca Minha Morada",
-      year: "2026",
-      description: "Vídeo de apresentação da Roca Minha Morada.",
-      deliverables: ["Vídeo vertical"],
-    },
+    
     {
       id: "proj-bottega-brows",
       title: "Bottega Brows",
