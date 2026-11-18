@@ -5,7 +5,9 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 const configuredSiteUrl = process.env.SITE_URL?.trim();
-const siteUrl = configuredSiteUrl ? new URL(configuredSiteUrl) : undefined;
+const siteUrl = configuredSiteUrl
+  ? new URL(configuredSiteUrl)
+  : new URL('https://videomakercuritiba.vercel.app');
 
 if (siteUrl && (siteUrl.protocol !== 'https:' || siteUrl.pathname !== '/' || siteUrl.search || siteUrl.hash)) {
   throw new Error('SITE_URL must be the official HTTPS origin, for example https://www.example.com');
@@ -124,22 +126,6 @@ export default defineConfig(({ command }) => {
           const sitemapPath = path.join(outputDirectory, 'sitemap.xml');
           const robotsPath = path.join(outputDirectory, 'robots.txt');
 
-          if (!siteUrl) {
-            const robots = await readFile(robotsPath, 'utf8');
-            const robotsWithoutSitemap = robots
-              .split(/\r?\n/)
-              .filter((line) => !line.trimStart().startsWith('Sitemap:'))
-              .join('\n')
-              .trimEnd();
-
-            await Promise.all([
-              rm(sitemapPath, { force: true }),
-              writeFile(robotsPath, `${robotsWithoutSitemap}\n`),
-            ]);
-            console.warn('[site-seo] SITE_URL is not configured; canonical URLs and sitemap.xml are omitted until the official domain is set.');
-            return;
-          }
-
           const sitemap = [
             '<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -163,7 +149,7 @@ export default defineConfig(({ command }) => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+          '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {

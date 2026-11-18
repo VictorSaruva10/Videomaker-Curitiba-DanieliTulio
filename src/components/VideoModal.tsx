@@ -52,7 +52,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
   const isLiked = Boolean(likedProjects[interactionKey]);
   const isSaved = Boolean(savedProjects[interactionKey]);
   const instagramUrl = project?.instagramUrl || siteConfig.contact.instagramUrl;
-  const videoSrc = project?.videoUrl || customVideoUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+  const videoSrc = project?.videoUrl || customVideoUrl || '';
   const poster = project?.coverImage;
 
   const whatsappMessage = isPhoto

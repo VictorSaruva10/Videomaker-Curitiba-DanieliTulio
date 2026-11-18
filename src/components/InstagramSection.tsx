@@ -17,16 +17,33 @@ export const InstagramSection: React.FC = () => {
       alt: "Danieli acompanhando uma gravação ao ar livre",
       title: "Por trás das histórias",
     },
+     {
+      img: "/assets/img_1.jpeg",
+      alt: "Danieli com foto profissional em estúdio",
+      title: "Um dia de fotografia",
+    },
     {
       img: "/assets/IMG_1207.JPG",
       alt: "Danieli registrando uma cena no Jardim Botânico",
       title: "Histórias em movimento",
     },
     {
+      img: "/assets/img_3.jpeg",
+      alt: "Danieli com foto profissional em estúdio",
+      title: "Um dia de fotografia",
+    },
+    {
       img: "/assets/IMG.jpeg",
       alt: "Danieli com equipamento de gravação em Curitiba",
       title: "Um dia de criação",
     },
+    {
+      img: "/assets/img_2.jpeg",
+      alt: "Danieli com foto profissional em estúdio",
+      title: "Um dia de fotografia",
+    },
+   
+    
     
   ];
   const [activeIndex, setActiveIndex] = useState(1);

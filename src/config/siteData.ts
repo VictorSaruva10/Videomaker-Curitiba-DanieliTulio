@@ -82,8 +82,8 @@ export const siteConfig = {
 
   // Canais de Contato
   contact: {
-    whatsappNumber: "554199433790",
-    whatsappDisplay: "+55 (41) 9943-3790",
+    whatsappNumber: "5541994337900",
+    whatsappDisplay: "+55 (41) 99433-7900",
     whatsappDefaultMessage:
       "Olá, Danieli! Conheci a Videomaker Curitiba pelo site e gostaria de saber mais sobre seus serviços de videomaker e storymaker. Poderia me enviar informações e valores?",
     instagramHandle: "videomaker.curitiba",
